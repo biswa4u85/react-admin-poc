@@ -1,28 +1,36 @@
-import React from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import {useIntl} from 'react-intl';
-import {Button, Checkbox, Form, Input} from 'antd';
-
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useIntl } from 'react-intl';
+import { Button, Checkbox, Form, Input } from 'antd';
 import IntlMessages from '../../../@crema/utility/IntlMessages';
-import {useAuthMethod} from '../../../@crema/utility/AuthHooks';
+import { useSelector, useDispatch } from 'react-redux'
+import { adminLogin } from '../../../store/AuthRedux'
 
 const SignInJwtAuth = () => {
   const navigate = useNavigate();
-  const {signInUser} = useAuthMethod();
+  const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token)
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const onFinish = (values) => {
+    values['loginType'] = "email"
+    dispatch(adminLogin(values))
   };
 
+  useEffect(() => {
+    if (token) {  
+      navigate('/sample/page-1');
+    }
+  }, [token]);
+
   const onGoToForgetPassword = () => {
-    navigate('/forget-password', {tab: 'jwtAuth'});
+    navigate('/forget-password', { tab: 'jwtAuth' });
   };
 
   function onRememberMe(e) {
     console.log(`checked = ${e.target.checked}`);
   }
 
-  const {messages} = useIntl();
+  const { messages } = useIntl();
 
   return (
     <div className='sign'>
@@ -32,22 +40,22 @@ const SignInJwtAuth = () => {
           name='basic'
           initialValues={{
             remember: true,
-            email: 'crema.demo@gmail.com',
-            password: 'Pass@1!@all',
+            email: 'demo@instastarz.com',
+            password: 'demo@123',
           }}
-          onFinish={signInUser}
-          onFinishFailed={onFinishFailed}>
+          onFinish={onFinish}
+        >
           <Form.Item
             name='email'
             className='form-field'
-            rules={[{required: true, message: 'Please input your Email!'}]}>
+            rules={[{ required: true, message: 'Please input your Email!' }]}>
             <Input placeholder={messages['common.email']} />
           </Form.Item>
 
           <Form.Item
             name='password'
             className='form-field'
-            rules={[{required: true, message: 'Please input your Password!'}]}>
+            rules={[{ required: true, message: 'Please input your Password!' }]}>
             <Input.Password placeholder={messages['common.password']} />
           </Form.Item>
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import {AppLoader} from '../index';
+import { AppLoader } from '../index';
 import PropTypes from 'prop-types';
-import {useAuthUser} from './AuthHooks';
+import { useSelector } from 'react-redux'
 
-const AuthRoutes = ({children}) => {
-  const {isLoading} = useAuthUser();
-  return isLoading ? <AppLoader /> : <>{children}</>;
+const AuthRoutes = ({ children }) => {
+  const isFetching = useSelector((state) => state.auth.isFetching)
+  return isFetching ? <AppLoader /> : <>{children}</>;
 };
 
 export default AuthRoutes;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 
 import './shared/styles/crema.less';
 import {
@@ -9,12 +9,18 @@ import {
   AppThemeProvider,
   AuthRoutes,
 } from './@crema';
-import configureStore from './redux/store';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './@crema/services/index';
-import FirebaseAuthProvider from './@crema/services/auth/firebase/FirebaseAuthProvider';
 
-const store = configureStore();
+import { store } from './store';
+import { saveState } from "./utility/browser-storage";
+import { debounce } from "debounce";
+
+store.subscribe(
+  debounce(() => {
+    saveState('redux', store.getState());
+  }, 800)
+);
 
 const App = () => (
   <AppContextProvider>
@@ -22,11 +28,9 @@ const App = () => (
       <AppThemeProvider>
         <AppLocaleProvider>
           <BrowserRouter>
-            <FirebaseAuthProvider>
-              <AuthRoutes>
-                <AppLayout />
-              </AuthRoutes>
-            </FirebaseAuthProvider>
+            <AuthRoutes>
+              <AppLayout />
+            </AuthRoutes>
           </BrowserRouter>
         </AppLocaleProvider>
       </AppThemeProvider>

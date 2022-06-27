@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card} from 'antd';
+import { Card } from 'antd';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import './AuthWrapper.style.less';
-import {AppInfoView} from '../../@crema';
+import { AppInfoView } from '../../@crema';
 import AppLogo from '../../@crema/core/AppLayout/components/AppLogo';
 
-const AuthWrapper = ({children}) => {
+const AuthWrapper = ({ children }) => {
   return (
     <AppAnimateGroup
       type='scale'
-      animateStyle={{flex: 1}}
+      animateStyle={{ flex: 1 }}
       delay={0}
       interval={10}
       duration={200}>
