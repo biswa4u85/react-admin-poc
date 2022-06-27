@@ -1,28 +1,28 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
-import {Avatar, Dropdown, List} from 'antd';
-import {FaChevronDown} from 'react-icons/fa';
+import { Avatar, Dropdown, List } from 'antd';
+import { FaChevronDown } from 'react-icons/fa';
 import './index.style.less';
-import {useThemeContext} from '../../../../utility/AppContextProvider/ThemeContextProvider';
-import {useAuthMethod, useAuthUser} from '../../../../utility/AuthHooks';
-import {useSidebarContext} from '../../../../utility/AppContextProvider/SidebarContextProvider';
+import { useThemeContext } from '../../../../utility/AppContextProvider/ThemeContextProvider';
+import { useAuthMethod, useAuthUser } from '../../../../utility/AuthHooks';
+import { useSidebarContext } from '../../../../utility/AppContextProvider/SidebarContextProvider';
 import PropTypes from 'prop-types';
 
-const UserInfo = ({hasColor}) => {
-  const {themeMode} = useThemeContext();
-  const {logout} = useAuthMethod();
-  const {user} = useAuthUser();
+const UserInfo = ({ hasColor }) => {
+  const { themeMode } = useThemeContext();
+  const { logout } = useAuthMethod();
+  const { user } = useAuthUser();
   const navigate = useNavigate();
-  const {sidebarColorSet} = useSidebarContext();
-  const {isSidebarBgImage} = useSidebarContext();
+  const { sidebarColorSet } = useSidebarContext();
+  const { isSidebarBgImage } = useSidebarContext();
 
   const getUserAvatar = () => {
-    if (user.displayName) {
-      return user.displayName.charAt(0).toUpperCase();
+    if (user?.displayName) {
+      return user?.displayName.charAt(0).toUpperCase();
     }
-    if (user.email) {
-      return user.email.charAt(0).toUpperCase();
+    if (user?.email) {
+      return user?.email.charAt(0).toUpperCase();
     }
   };
 
@@ -56,8 +56,8 @@ const UserInfo = ({hasColor}) => {
               minWidth: 150,
             }}>
             <a className='cr-user-info-inner ant-dropdown-link'>
-              {user.photoURL ? (
-                <Avatar className='cr-user-info-avatar' src={user.photoURL} />
+              {user?.photoURL ? (
+                <Avatar className='cr-user-info-avatar' src={user?.photoURL} />
               ) : (
                 <Avatar className='cr-user-info-avatar'>
                   {getUserAvatar()}
@@ -69,7 +69,7 @@ const UserInfo = ({hasColor}) => {
                     className={clsx('cr-user-name text-truncate', {
                       light: themeMode === 'light',
                     })}>
-                    {user.displayName ? user.displayName : 'admin user '}
+                    {user?.displayName ? user?.displayName : 'admin user '}
                   </h3>
                   <span className='cr-user-arrow'>
                     <FaChevronDown />
@@ -97,7 +97,7 @@ const UserInfo = ({hasColor}) => {
               minWidth: 150,
             }}>
             <a className='cr-user-info-inner ant-dropdown-link'>
-              {user.photoURL ? (
+              {user?.photoURL ? (
                 <Avatar className='cr-user-info-avatar' src={user.photoURL} />
               ) : (
                 <Avatar className='cr-user-info-avatar'>
@@ -110,7 +110,7 @@ const UserInfo = ({hasColor}) => {
                     className={clsx('cr-user-name text-truncate', {
                       light: themeMode === 'light',
                     })}>
-                    {user.displayName ? user.displayName : 'admin user '}
+                    {user?.displayName ? user?.displayName : 'admin user '}
                   </h3>
                   <span className='cr-user-arrow'>
                     <FaChevronDown />

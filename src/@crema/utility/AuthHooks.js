@@ -23,35 +23,35 @@ export const useAuthMethod = () => {
     signUpUser,
   };
 };*/
-//For Firebase Auth
-import {
-  useFirebase,
-  useFirebaseActions,
-} from '../services/auth/firebase/FirebaseAuthProvider';
-import {getUserFromFirebase} from './helper/AuthHelper';
+// //For Firebase Auth
+// import {
+//   useFirebase,
+//   useFirebaseActions,
+// } from '../services/auth/firebase/FirebaseAuthProvider';
+// import {getUserFromFirebase} from './helper/AuthHelper';
 
 export const useAuthUser = () => {
-  const {user, isAuthenticated, isLoading} = useFirebase();
+  // const {user, isAuthenticated, isLoading} = useFirebase();
   return {
-    isLoading,
-    isAuthenticated,
-    user: getUserFromFirebase(user),
+    // isLoading,
+    // isAuthenticated,
+    // user: getUserFromFirebase(user),
   };
 };
 
 export const useAuthMethod = () => {
-  const {
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    signInWithPopup,
-    logout,
-  } = useFirebaseActions();
+  // const {
+  //   signInWithEmailAndPassword,
+  //   createUserWithEmailAndPassword,
+  //   signInWithPopup,
+  //   logout,
+  // } = useFirebaseActions();
 
   return {
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    signInWithPopup,
-    logout,
+    // signInWithEmailAndPassword,
+    // createUserWithEmailAndPassword,
+    // signInWithPopup,
+    // logout,
   };
 };
 

@@ -1,16 +1,15 @@
-import React, {useState} from 'react';
-import {Avatar, Form, Col, Input, Button} from 'antd';
-import {AppRowContainer} from '../../../../@crema';
-import {useDropzone} from 'react-dropzone';
-import {useAuthUser} from '../../../../@crema/utility/AuthHooks';
+import React, { useState } from 'react';
+import { Avatar, Form, Col, Input, Button } from 'antd';
+import { AppRowContainer } from '../../../../@crema';
+import { useDropzone } from 'react-dropzone';
+// import {useAuthUser} from '../../../../@crema/utility/AuthHooks';
 import './index.style.less';
 
 const PersonalInfo = () => {
-  const {user} = useAuthUser();
-
+  const { user } = {}
   const [userImage, setUserImage] = useState('/assets/images/placeholder.jpg');
 
-  const {getRootProps, getInputProps} = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     accept: 'image/*',
     onDrop: (acceptedFiles) => {
       setUserImage(URL.createObjectURL(acceptedFiles[0]));
@@ -39,7 +38,7 @@ const PersonalInfo = () => {
 
         <div className='info-upload-content'>
           <div className='info-upload-btn-group'>
-            <div {...getRootProps({className: 'dropzone'})}>
+            <div {...getRootProps({ className: 'dropzone' })}>
               <input {...getInputProps()} />
               <label htmlFor='icon-button-file'>
                 <Button type='primary'>Upload</Button>
@@ -54,14 +53,14 @@ const PersonalInfo = () => {
         <Col xs={24} md={12}>
           <Form.Item
             name='displayName'
-            rules={[{required: true, message: 'Please input your Full Name!'}]}>
+            rules={[{ required: true, message: 'Please input your Full Name!' }]}>
             <Input placeholder='Full Name' />
           </Form.Item>
         </Col>
         <Col xs={24} md={12}>
           <Form.Item
             name='username'
-            rules={[{required: true, message: 'Please input your User Name!'}]}>
+            rules={[{ required: true, message: 'Please input your User Name!' }]}>
             <Input placeholder='User Name' />
           </Form.Item>
         </Col>
@@ -69,7 +68,7 @@ const PersonalInfo = () => {
           <Form.Item
             name='email'
             rules={[
-              {required: true, message: 'Please input your e-mail address!'},
+              { required: true, message: 'Please input your e-mail address!' },
             ]}>
             <Input type='text' placeholder='E-mail' />
           </Form.Item>
@@ -77,7 +76,7 @@ const PersonalInfo = () => {
         <Col xs={24} md={12}>
           <Form.Item
             name='company'
-            rules={[{required: true, message: 'Please input your company!'}]}>
+            rules={[{ required: true, message: 'Please input your company!' }]}>
             <Input type='text' placeholder='Company' />
           </Form.Item>
         </Col>
