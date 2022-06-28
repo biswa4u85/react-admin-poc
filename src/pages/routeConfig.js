@@ -9,6 +9,7 @@ const routesConfig = [
     id: 'dashboards',
     title: 'Application',
     messageId: 'sidebar.application',
+    permittedRole: RoutePermittedRole.superadmin,
     type: 'group',
     children: [
       {
@@ -21,7 +22,6 @@ const routesConfig = [
       {
         id: 'health-care',
         title: 'Health Care',
-        permittedRole: RoutePermittedRole.user,
         messageId: 'sidebar.healthCare',
         icon: <FaRegHospital />,
         path: '/dashboards/health-care',
@@ -33,6 +33,7 @@ const routesConfig = [
     title: 'Sample',
     messageId: 'sidebar.sample',
     type: 'group',
+    permittedRole: RoutePermittedRole.superadmin,
     children: [
       {
         id: 'page-1',

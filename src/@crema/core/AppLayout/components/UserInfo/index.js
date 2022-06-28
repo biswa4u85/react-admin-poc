@@ -4,15 +4,16 @@ import clsx from 'clsx';
 import { Avatar, Dropdown, List } from 'antd';
 import { FaChevronDown } from 'react-icons/fa';
 import './index.style.less';
+import { useSelector, useDispatch } from 'react-redux'
 import { useThemeContext } from '../../../../utility/AppContextProvider/ThemeContextProvider';
-import { useAuthMethod, useAuthUser } from '../../../../utility/AuthHooks';
 import { useSidebarContext } from '../../../../utility/AppContextProvider/SidebarContextProvider';
 import PropTypes from 'prop-types';
+import { logout } from '../../../../../store/AuthRedux'
 
 const UserInfo = ({ hasColor }) => {
   const { themeMode } = useThemeContext();
-  const { logout } = useAuthMethod();
-  const { user } = useAuthUser();
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.auth.user)
   const navigate = useNavigate();
   const { sidebarColorSet } = useSidebarContext();
   const { isSidebarBgImage } = useSidebarContext();
@@ -29,7 +30,7 @@ const UserInfo = ({ hasColor }) => {
   const menu = (
     <List className='dropdown-list'>
       <List.Item onClick={() => navigate('/my-profile')}>My Profile</List.Item>
-      <List.Item onClick={() => logout()}>Logout</List.Item>
+      <List.Item onClick={() => dispatch(logout())}>Logout</List.Item>
     </List>
   );
 

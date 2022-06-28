@@ -14,7 +14,7 @@ import PageVisits from './PageVisits';
 import OrderNTransaction from './OrderNTransaction';
 import TrafficSource from './TrafficSource';
 import { AppInfoView } from '../../../@crema';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { onGetAnalyticsData } from '../../../redux/actions/Dashboard';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 
@@ -25,7 +25,8 @@ const Analytics = () => {
     // dispatch(onGetAnalyticsData());
   }, [dispatch]);
 
-  const analyticsData = useSelector(({ dashboard }) => dashboard.analyticsData);
+  // const analyticsData = useSelector(({ dashboard }) => dashboard.analyticsData);
+  const analyticsData = {}
 
   return (
     <>

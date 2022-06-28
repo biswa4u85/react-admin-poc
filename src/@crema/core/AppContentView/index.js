@@ -9,24 +9,22 @@ import {
 import AppErrorBoundary from '../AppErrorBoundary';
 import './index.style.less';
 import generateRoutes from '../../utility/RouteGenerator';
-// import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { initialUrl } from '../../../shared/constants/AppConst';
 
 const { Content } = Layout;
 
 const AppContentView = () => {
-  // const isAuthenticated = useSelector((state) => state.auth.token)
-  // const user = useSelector((state) => state.auth.user)
+  const isAuthenticated = useSelector((state) => state.auth.token)
+  const user = useSelector((state) => state.auth.user)
   return (
     <Content className='main-content-view'>
       <AppSuspense>
         <AppErrorBoundary>
           {generateRoutes({
-            // isAuthenticated: isAuthenticated,
-            // userRole: user?.roles,
-            isAuthenticated:true,
-            userRole: 'admin',
+            isAuthenticated: isAuthenticated,
+            userRole: user?.roles,
             unAuthorizedStructure,
             authorizedStructure,
             anonymousStructure,

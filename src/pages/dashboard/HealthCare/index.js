@@ -29,7 +29,8 @@ const HealthCare = () => {
     // dispatch(onGetHCData());
   }, [dispatch]);
 
-  const { healthCare } = useSelector(({ dashboard }) => dashboard);
+  // const { healthCare } = useSelector(({ dashboard }) => dashboard);
+  const { healthCare } = {}
 
   return (
     <>
