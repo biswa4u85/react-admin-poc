@@ -1,6 +1,6 @@
 import React from 'react';
-import {Layout} from 'antd';
-import {AppSuspense} from '../../index';
+import { Layout } from 'antd';
+import { AppSuspense } from '../../index';
 import {
   anonymousStructure,
   authorizedStructure,
@@ -9,21 +9,24 @@ import {
 import AppErrorBoundary from '../AppErrorBoundary';
 import './index.style.less';
 import generateRoutes from '../../utility/RouteGenerator';
-// import {useAuthUser} from '../../utility/AuthHooks';
-import {Navigate, Route, Routes} from 'react-router-dom';
-import {initialUrl} from '../../../shared/constants/AppConst';
+// import { useSelector } from 'react-redux'
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { initialUrl } from '../../../shared/constants/AppConst';
 
-const {Content} = Layout;
+const { Content } = Layout;
 
 const AppContentView = () => {
-  // const {user, isAuthenticated} = useAuthUser();
+  // const isAuthenticated = useSelector((state) => state.auth.token)
+  // const user = useSelector((state) => state.auth.user)
   return (
     <Content className='main-content-view'>
       <AppSuspense>
         <AppErrorBoundary>
           {generateRoutes({
             // isAuthenticated: isAuthenticated,
-            // userRole: user?.role,
+            // userRole: user?.roles,
+            isAuthenticated:true,
+            userRole: 'admin',
             unAuthorizedStructure,
             authorizedStructure,
             anonymousStructure,

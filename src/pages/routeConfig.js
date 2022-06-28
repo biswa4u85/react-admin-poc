@@ -1,7 +1,33 @@
 import React from 'react';
 import { BiAlignLeft } from 'react-icons/bi';
+import { MdOutlineAnalytics } from 'react-icons/md';
+import { FaRegHospital } from 'react-icons/fa';
+import { RoutePermittedRole } from '../shared/constants/AppEnums';
 
 const routesConfig = [
+  {
+    id: 'dashboards',
+    title: 'Application',
+    messageId: 'sidebar.application',
+    type: 'group',
+    children: [
+      {
+        id: 'analytics',
+        title: 'Analytics',
+        messageId: 'sidebar.app.dashboard.analytics',
+        icon: <MdOutlineAnalytics />,
+        path: '/dashboards/analytics',
+      },
+      {
+        id: 'health-care',
+        title: 'Health Care',
+        permittedRole: RoutePermittedRole.user,
+        messageId: 'sidebar.healthCare',
+        icon: <FaRegHospital />,
+        path: '/dashboards/health-care',
+      },
+    ],
+  },
   {
     id: 'app',
     title: 'Sample',

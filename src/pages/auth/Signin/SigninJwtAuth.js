@@ -18,7 +18,7 @@ const SignInJwtAuth = () => {
 
   useEffect(() => {
     if (token) {  
-      navigate('/sample/page-1');
+      navigate('/dashboards/health-care');
     }
   }, [token]);
 

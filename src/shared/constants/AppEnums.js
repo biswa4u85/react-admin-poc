@@ -4,6 +4,7 @@ export const authRole = {
 };
 
 export const RoutePermittedRole = {
+  superadmin: 'super-admin',
   admin: 'admin',
   user: 'user',
 };

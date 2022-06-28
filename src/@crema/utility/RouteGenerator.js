@@ -25,6 +25,8 @@ const generateRoutes = (structure) => {
   const dynamicRoutes = [];
 
   if (anonymousStructure) {
+    console.log('userRole', userRole);
+    console.log('isAuthenticated', isAuthenticated);
     dynamicRoutes.push(
       ...routesGenerator(isAuthenticated, anonymousStructure, 'anonymous'),
     );
@@ -50,7 +52,6 @@ const generateRoutes = (structure) => {
       ),
     );
   }
-  console.log('dynamicRoutes', dynamicRoutes);
   return useRoutes(dynamicRoutes);
 };
 

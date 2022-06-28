@@ -10,12 +10,11 @@ import {
   useLayoutActionsContext,
   useLayoutContext,
 } from '../../utility/AppContextProvider/LayoutContextProvider';
-// import {useAuthUser} from '../../utility/AuthHooks';
+import { useSelector } from 'react-redux'
 import { useSidebarActionsContext } from '../../utility/AppContextProvider/SidebarContextProvider';
 
 const AppLayout = () => {
-  let isAuthenticated = true
-  // const {isAuthenticated} = useAuthUser();
+  const isAuthenticated = useSelector((state) => state.auth.token)
   const { navStyle, layoutType } = useLayoutContext();
   const { updateNavStyle } = useLayoutActionsContext();
   const { updateMenuStyle, setSidebarBgImage } = useSidebarActionsContext();
