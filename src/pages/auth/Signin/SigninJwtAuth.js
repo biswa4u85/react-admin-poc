@@ -12,7 +12,6 @@ const SignInJwtAuth = () => {
   const token = useSelector((state) => state.auth.token)
 
   const onFinish = (values) => {
-    values['loginType'] = "email"
     dispatch(adminLogin(values))
   };
 
@@ -40,8 +39,8 @@ const SignInJwtAuth = () => {
           name='basic'
           initialValues={{
             remember: true,
-            email: 'demo@instastarz.com',
-            password: 'demo@123',
+            email: 'someAdmin@disco.com',
+            password: 'somePassword@123',
           }}
           onFinish={onFinish}
         >

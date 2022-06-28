@@ -1,5 +1,4 @@
 import React from 'react';
-import {RoutePermittedRole} from '../../shared/constants/AppEnums';
 
 const Page1 = React.lazy(() => import('./Page1'));
 const Page2 = React.lazy(() => import('./Page2'));

@@ -4,7 +4,7 @@ import { MdOutlineAnalytics } from 'react-icons/md';
 import { FaRegHospital } from 'react-icons/fa';
 import { RoutePermittedRole } from '../shared/constants/AppEnums';
 
-const routesConfig = [
+const sidebarRouteConfig = [
   {
     id: 'dashboards',
     title: 'Application',
@@ -53,5 +53,32 @@ const routesConfig = [
       },
     ],
   },
+
+  {
+    id: 'promo',
+    title: 'promosec',
+    messageId: 'sidebar.promo',
+    permittedRole: RoutePermittedRole.superadmin,
+    type: 'group',
+    children: [
+      {
+        id: 'promo',
+        title: 'promolist',
+        messageId: 'sidebar.app.promo.list',
+        icon: <MdOutlineAnalytics />,
+        path: '/promo/list',
+      },
+      {
+        id: 'add',
+        title: 'promoadd',
+        messageId: 'sidebar.app.promo.add',
+        icon: <MdOutlineAnalytics />,
+        path: '/promo/addform',
+      },
+   
+    ],
+  }, 
+
+  
 ];
-export default routesConfig;
+export default sidebarRouteConfig;

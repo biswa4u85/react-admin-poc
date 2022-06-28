@@ -1,12 +1,14 @@
-import { dashboardConfig } from './dashboard';
-import { errorPagesConfigs } from './errorPages';
-import { authRouteConfig } from './auth';
 import { initialUrl } from '../shared/constants/AppConst';
 import Error403 from './errorPages/Error403';
 import React from 'react';
-import { samplePagesConfigs } from './sample';
 import Error404 from './errorPages/Error404';
+
+import { authRouteConfig } from './auth';
+import { dashboardConfig } from './dashboard';
+import { errorPagesConfigs } from './errorPages';
 import { profileConfig } from './profile';
+import { samplePagesConfigs } from './sample';
+import { promoPagesConfigs } from './promo';
 
 const authorizedStructure = {
   fallbackPath: '/signin',
@@ -14,6 +16,7 @@ const authorizedStructure = {
   routes: [
     ...dashboardConfig,
     ...samplePagesConfigs,
+    ...promoPagesConfigs,
     ...profileConfig
   ],
 };
