@@ -22,7 +22,7 @@ const ComponentCardWithoutAnim = ({
           <span>{title}</span>
           <span className='comp-card-title-description text-truncate'>
             {description}
-            {link}
+            {/* {link} */}
           </span>
         </>
       }
@@ -46,7 +46,6 @@ ComponentCardWithoutAnim.defaultProps = {
 
 ComponentCardWithoutAnim.propTypes = {
   component: PropTypes.any.isRequired,
-  source: PropTypes.node,
   title: PropTypes.node.isRequired,
   description: PropTypes.node,
   link: PropTypes.node,
