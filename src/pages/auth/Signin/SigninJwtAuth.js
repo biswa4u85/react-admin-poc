@@ -12,11 +12,12 @@ const SignInJwtAuth = () => {
   const token = useSelector((state) => state.auth.token)
 
   const onFinish = (values) => {
+    values['loginType'] = "email"
     dispatch(adminLogin(values))
   };
 
   useEffect(() => {
-    if (token) {  
+    if (token) {
       navigate('/dashboards/health-care');
     }
   }, [token]);
@@ -39,8 +40,8 @@ const SignInJwtAuth = () => {
           name='basic'
           initialValues={{
             remember: true,
-            email: 'someAdmin@disco.com',
-            password: 'somePassword@123',
+            email: 'demo@instastarz.com',
+            password: 'demo@123',
           }}
           onFinish={onFinish}
         >

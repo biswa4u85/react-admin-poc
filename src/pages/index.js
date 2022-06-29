@@ -9,6 +9,7 @@ import { errorPagesConfigs } from './errorPages';
 import { profileConfig } from './profile';
 import { samplePagesConfigs } from './sample';
 import { promoPagesConfigs } from './promo';
+import { celebritiesConfigs } from './Celebrities';
 
 const authorizedStructure = {
   fallbackPath: '/signin',
@@ -17,7 +18,8 @@ const authorizedStructure = {
     ...dashboardConfig,
     ...samplePagesConfigs,
     ...promoPagesConfigs,
-    ...profileConfig
+    ...profileConfig,
+    ...celebritiesConfigs,
   ],
 };
 

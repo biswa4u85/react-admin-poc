@@ -7,6 +7,7 @@ import ComponentCardWithoutAnim from './ComponentCardWithoutAnim';
 const AppComponentCard = ({
   title,
   description,
+  link,
   className,
   maxHeight,
   component,
@@ -17,6 +18,7 @@ const AppComponentCard = ({
       <ComponentCardWithoutAnim
         title={title}
         description={description}
+        link={link}
         className={className}
         maxHeight={maxHeight}
         component={component}
@@ -31,6 +33,7 @@ export default AppComponentCard;
 
 AppComponentCard.defaultProps = {
   description: '',
+  link: '',
   maxHeight: 500,
 };
 
@@ -39,6 +42,7 @@ AppComponentCard.propTypes = {
   source: PropTypes.node,
   title: PropTypes.node.isRequired,
   description: PropTypes.node,
+  link: PropTypes.node,
   maxHeight: PropTypes.number,
   className: PropTypes.string,
   size: PropTypes.number,
