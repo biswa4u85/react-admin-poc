@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiPutCall, apiGetCall, apiPostCall  } from '../utility/site-apis'
+import { apiPutCall, apiGetCall, apiPostCall } from '../utility/site-apis'
 import { message } from 'antd';
 
 const initialState = {
     isFetching: false,
     error: null,
-    Promo: [],
-    singlePromoDetails: {}
+    Promolist: [],
+    issuccess: false,
+    singledata:{}
 }
 
 export const getPromo = createAsyncThunk(
@@ -20,10 +21,10 @@ export const getPromo = createAsyncThunk(
     }
 )
 
-export const singlePromo = createAsyncThunk(
-    'Promo/singleUser',
+export const addPromo = createAsyncThunk(
+    'Promo/addPromo',
     async (params, { rejectWithValue }) => {
-        const response = await apiGetCall(`/Promo/${params.id}`, params)
+        const response = await apiGetCall(`/Promo`, params)
         if (response.data.status === 'error') {
             return rejectWithValue(response.data)
         }
@@ -32,15 +33,29 @@ export const singlePromo = createAsyncThunk(
 )
 
 export const updatepromo = createAsyncThunk(
-    'user/updateUser',
+    'Promo/updatepromo',
     async (params, { rejectWithValue }) => {
-      const response = await apiPutCall(`/user/profile`, params)
-      if (response.data.status === 'error') {
-        return rejectWithValue(response.data)
-      }
-      return response.data
+        const response = await apiPutCall(`/Promo/${params.id}`, params)
+        if (response.data.status === 'error') {
+            return rejectWithValue(response.data)
+        }
+        return response.data
     }
-  )
+)
+
+export const deletpromo = createAsyncThunk(
+    'Promo/deletpromo',
+    async (params, { rejectWithValue }) => {
+        // console.log(params)
+        const response = await apiDeleteCall(`/Promo/${params.id}`, params)
+        if (response.data.status === 'error') {
+            return rejectWithValue(response.data)
+        }
+        return response.data
+    }
+)
+
+
 
 export const counterSlice = createSlice({
     name: 'auth',
@@ -49,6 +64,10 @@ export const counterSlice = createSlice({
         logout: (state) => {
             state.user = null
             state.token = null
+        },
+        singleid: (state, action) => {
+            // console.log(action)
+            state.singledata = action.payload
         },
     },
     extraReducers: {
@@ -65,25 +84,58 @@ export const counterSlice = createSlice({
         [getPromo.fulfilled]: (state, action) => {
             state.isFetching = false
             state.error = null
-            state.Promo = action.payload.data
+            state.Promolist = action.payload.data
         },
-        // singlePromo
-        [singlePromo.pending]: (state, action) => {
+        // addPromo
+        [addPromo.pending]: (state, action) => {
             state.isFetching = true
             state.error = null
+            state.issuccess = false
         },
-        [singlePromo.rejected]: (state, action) => {
+        [addPromo.rejected]: (state, action) => {
             state.isFetching = false
-            state.error = action?.payload?.message
+            state.error = action.payload
         },
-        [singlePromo.fulfilled]: (state, action) => {
+        [addPromo.fulfilled]: (state, action) => {
             state.isFetching = false
             state.error = null
-            state.singlePromoDetails = action.payload.data
+            state.issuccess = true
+        },
+        // updatepromo
+        [updatepromo.pending]: (state, action) => {
+            state.isFetching = true
+            state.error = null
+            state.issuccess = false
+        },
+        [updatepromo.rejected]: (state, action) => {
+            // alert(action.payload);
+            state.isFetching = false
+            state.error = action.payload
+        },
+        [updatepromo.fulfilled]: (state, action) => {
+            state.isFetching = false
+            state.error = null
+            // console.log(action.payload)
+            state.issuccess = true
+        },
+        // deletpromo
+        [deletpromo.pending]: (state, action) => {
+            state.isFetching = true
+            state.error = null
+            state.issuccess = false
+        },
+        [deletpromo.rejected]: (state, action) => {
+            state.isFetching = false
+            state.error = action.payload
+        },
+        [deletpromo.fulfilled]: (state, action) => {
+            state.isFetching = false
+            state.error = null
+            state.issuccess = true
         },
     }
 
 })
 
-export const { logout } = counterSlice.actions
+export const { logout,singleid } = counterSlice.actions
 export default counterSlice.reducer

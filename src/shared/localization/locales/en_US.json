@@ -387,6 +387,7 @@
   "sidebar.app.promo": "promo",
   "sidebar.app.promo.list": "List",
   "sidebar.app.promo.add": "Add",
+  "sidebar.app.promo.edit": "Edit",
   "sidebar.app.dashboard.crm": "CRM",
   "sidebar.app.dashboard.crypto": "Crypto",
   "sidebar.app.metrics": "Metrics",

@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,useRef,} from 'react';
 import {Button, Checkbox, Form, Input, Space} from 'antd';
+import { useSelector, useDispatch } from 'react-redux'
 
 
 const formItemLayout = {
@@ -22,6 +23,30 @@ const formItemLayout = {
   
 
 const PromAddform = () => {
+  const pageActive = useRef(false);
+  const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token)
+  const issuccess = useSelector((state) => state.Promo.issuccess)
+
+
+
+//   const onFinish = (values) => {
+//     console.log('Success:', values);
+//     let params = { ...values, token }
+//     pageActive.current = true;
+//     dispatch(addPromo(params))
+// };
+
+// useEffect(() => {
+//     if (pageActive.current && issuccess) {
+//         navigate('/list')
+//     }
+// }, [issuccess])
+// console.log(issuccess)
+
+
+
+
     const [form] = Form.useForm();
     const [checkNick, setCheckNick] = useState(false);
     useEffect(() => {

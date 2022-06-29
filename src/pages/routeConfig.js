@@ -75,6 +75,13 @@ const sidebarRouteConfig = [
         icon: <MdOutlineAnalytics />,
         path: '/promo/addform',
       },
+      {
+        id: 'edit',
+        title: 'promoedit',
+        messageId: 'sidebar.app.promo.edit',
+        icon: <MdOutlineAnalytics />,
+        path: '/promo/editform',
+      },
    
     ],
   }, 
