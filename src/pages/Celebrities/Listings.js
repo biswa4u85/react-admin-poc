@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import AppComponentCard from '../../@crema/core/AppComponentCard';
 import AppRowContainer from '../../@crema/core/AppRowContainer/AppRowSimpleContainer';
-import { Tag, Row, Col, Space, Form, Input, Button } from 'antd';
+import { Tag, Row, Col, Space, Form, Input, Button, } from 'antd';
 import StandardTable from '../common/StandardTable';
+import { DoubleRightOutlined, EditOutlined, DeleteOutlined, } from '@ant-design/icons';
 
 const columns = [
   {
@@ -46,8 +47,12 @@ const columns = [
     key: 'action',
     render: (text, record) => (
       <Space size='middle'>
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
+        {/* <a>Invite {record.name}</a> */}
+        {/* <a>Delete</a> */}
+        <DoubleRightOutlined style={{ color: '#52c41a' }} />
+        <EditOutlined style={{ color: 'blue' }} />
+        <DeleteOutlined style={{ color: 'orange' }} />
+
       </Space>
     ),
   },
@@ -83,7 +88,7 @@ const Listings = () => {
       <AppRowContainer>
         <Col xs={24} xxl={12} key='form-g'>
           <AppComponentCard
-            title={'Celebrities'} 
+            title={'Celebrities'}
             link={'Celebrities'}
             component={ListingsData}
           />
@@ -127,17 +132,20 @@ const ListingsData = () => {
           </Form.Item>
         </Row>
         <Row>
-          <Col span={24} style={{ textAlign: 'right' }}>
-            <Button type='primary' htmlType='submit'>
-              Search
-            </Button>
-            <Button
-              style={{ margin: '0 8px' }}
-              onClick={() => {
-                form.resetFields();
-              }}>
-              Clear
-            </Button>
+          <Col span={24} >
+            <Button style={{ float: 'left' }} type='primary'>Add Product</Button>
+            <div style={{ textAlign: 'right' }}>
+              <Button type='primary' htmlType='submit'>
+                Search
+              </Button>
+              <Button
+                style={{ margin: '0 8px' }}
+                onClick={() => {
+                  form.resetFields();
+                }}>
+                Clear
+              </Button>
+            </div>
           </Col>
         </Row>
       </Form>
