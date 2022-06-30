@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiPutCall, apiGetCall, apiPostCall } from '../utility/site-apis'
+import { apiPutCall, apiGetCall, apiPostCall, apiDeleteCall } from '../utility/site-apis'
 import { message } from 'antd';
 
 const initialState = {
