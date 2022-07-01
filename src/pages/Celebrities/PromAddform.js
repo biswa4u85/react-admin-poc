@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Checkbox, Form, Col, Input, Space ,Upload} from 'antd';
+import { Button, Checkbox, Form, Col, Input, Space, Upload, Select, Switch } from 'antd';
 import AppComponentCard from '../../@crema/core/AppComponentCard';
 import AppRowContainer from '../../@crema/core/AppRowContainer/AppRowSimpleContainer';
 import { UploadOutlined, } from '@ant-design/icons';
@@ -99,7 +99,7 @@ const PromAddform = () => {
           <Form.Item
             {...formItemLayout}
             name='username'
-            label='Name'
+            label='Full Name'
             rules={[
               {
                 required: true,
@@ -111,20 +111,70 @@ const PromAddform = () => {
 
           <Form.Item
             {...formItemLayout}
-            name='nickname'
-            label='Nickname'
+            name='stagename'
+            label='Stage Name'
             rules={[
               {
-                required: checkNick,
-                message: 'Please input your nickname',
+                required: true,
+                message: 'Please enter your Stage Name',
               },
             ]}>
-            <Input placeholder='Please input your nickname' />
+            <Input placeholder='Please enter your Stage Name' />
           </Form.Item>
+
+          <Form.Item {...formTailLayout}
+            name='profile'
+            label="Profile"
+            rules={[
+              {
+                required: true,
+                message: 'Please add Profile Image',
+              },
+            ]}
+
+          >
+
+            <Upload {...props} style={{ marginLeft: 0 }} >
+              <Button icon={<UploadOutlined />}>Upload</Button>
+            </Upload>
+
+          </Form.Item>
+
+          <Form.Item
+            {...formItemLayout}
+            name='managername'
+            label='Manager Name'
+            rules={[
+              {
+                required: true,
+                message: 'Please enter Manager Name',
+              },
+            ]}>
+            <Input placeholder='Please enter Manager Name' />
+          </Form.Item>
+
+          <Form.Item
+            {...formItemLayout}
+            name='phone'
+            label='Manager Number'
+            rules={[
+              {
+                required: true,
+                message: 'Please enter your Manager Number!',
+              },
+            ]}>
+            <Input placeholder='Please enter your Manager Number'
+              // addonBefore={prefixSelector}
+              style={{
+                width: '100%',
+              }}
+            />
+          </Form.Item>
+
           <Form.Item
             {...formItemLayout}
             name='id'
-            label='id'
+            label='Insta ID'
             rules={[
               {
                 required: true,
@@ -136,33 +186,53 @@ const PromAddform = () => {
 
           <Form.Item
             {...formItemLayout}
-            name='phone'
-            label='Phone Number'
+            name='select'
+            label='Type Of Celebrity'
+            hasFeedback
             rules={[
               {
                 required: true,
-                message: 'Please input your phone number!',
+                message: 'Please select Celebrity Type!',
               },
             ]}>
-            <Input placeholder='Please input your Number'
-              // addonBefore={prefixSelector}
-              style={{
-                width: '100%',
-              }}
-            />
+
+            <Select placeholder='Please select Celebrity Type'>
+              <Option value='bollywood'>bollywood</Option>
+              <Option value='hollywood'>hollywood</Option>
+              <Option value='instagram'>instagram</Option>
+              <Option value='tiktok'>tiktok</Option>
+              <Option value='youtube'>youtube</Option>
+            </Select>
           </Form.Item>
-          {/* 
-          <ImgCrop rotate>
-      <Upload
-        action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
-        listType='picture-card'
-        fileList={fileList}
-        onChange={onChange}
-        onPreview={onPreview}>
-        {fileList.length < 5 && '+ Upload'}
-      </Upload>
-    </ImgCrop> */}
-          <Form.Item
+
+          <Form.Item {...formItemLayout} label='Switch' valuePropName='checked'>
+            <Switch />
+          </Form.Item>
+
+
+          <Form.Item {...formTailLayout}>
+            <Button type='primary' onClick={onCheck}>
+              Add
+            </Button>
+          </Form.Item>
+
+
+
+
+
+
+
+          {/* <ImgCrop rotate>
+            <Upload
+              action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
+              listType='picture-card'
+              fileList={fileList}
+              onChange={onChange}
+              onPreview={onPreview}>
+              {fileList.length < 5 && '+ Upload'}
+            </Upload>
+          </ImgCrop> */}
+         {/* <Form.Item
             {...formItemLayout}
             name={['user', 'email']}
             label="Email"
@@ -174,31 +244,19 @@ const PromAddform = () => {
             ]}
           >
             <Input placeholder='Please input your email' />
-          </Form.Item>
+          </Form.Item> */}
 
-          <Form.Item {...formTailLayout}
-          label="Upload"
-         
-          
-          >
-            <Upload {...props}  style={{marginLeft: 0}} >
-              <Button icon={<UploadOutlined />}>Upload</Button>
-            </Upload>
-          </Form.Item>
+
         </Form>
 
-          <Form.Item {...formTailLayout}>
-            <Checkbox checked={checkNick} onChange={onCheckboxChange}>
-              Nickname is required
-            </Checkbox>
-          </Form.Item>
-          <Form.Item {...formTailLayout}>
-            <Button type='primary' onClick={onCheck}>
-              Add
-            </Button>
-          </Form.Item>
-
+        {/* <Form.Item {...formTailLayout}>
+          <Checkbox checked={checkNick} onChange={onCheckboxChange}>
+            Nickname is required
+          </Checkbox>
+        </Form.Item>  */}
           
+
+
       </Space>
     </>
   );
