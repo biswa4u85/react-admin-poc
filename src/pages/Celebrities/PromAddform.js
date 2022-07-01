@@ -4,6 +4,8 @@ import AppComponentCard from '../../@crema/core/AppComponentCard';
 import AppRowContainer from '../../@crema/core/AppRowContainer/AppRowSimpleContainer';
 import { UploadOutlined, } from '@ant-design/icons';
 
+
+
 // uplode
 const props = {
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -91,7 +93,7 @@ const PromAddform = () => {
       console.log('Failed:', errorInfo);
     }
   };
-
+  
   return (
     <>
       <Space direction='vertical' style={{ width: '100%' }}>
@@ -214,38 +216,9 @@ const PromAddform = () => {
             <Button type='primary' onClick={onCheck}>
               Add
             </Button>
+            <Button style={{marginLeft:'10px'}}
+            >Default</Button>
           </Form.Item>
-
-
-
-
-
-
-
-          {/* <ImgCrop rotate>
-            <Upload
-              action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
-              listType='picture-card'
-              fileList={fileList}
-              onChange={onChange}
-              onPreview={onPreview}>
-              {fileList.length < 5 && '+ Upload'}
-            </Upload>
-          </ImgCrop> */}
-         {/* <Form.Item
-            {...formItemLayout}
-            name={['user', 'email']}
-            label="Email"
-            rules={[
-              {
-                required: true,
-                type: 'email',
-              },
-            ]}
-          >
-            <Input placeholder='Please input your email' />
-          </Form.Item> */}
-
 
         </Form>
 
