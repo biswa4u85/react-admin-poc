@@ -30,6 +30,7 @@ export interface Payload<TValue extends ValueType, TName extends NameType> {
   unit?: ReactNode;
   dataKey?: string | number;
   payload?: any;
+  chartType?: string;
 }
 
 export interface Props<TValue extends ValueType, TName extends NameType> {
@@ -126,7 +127,7 @@ export class DefaultTooltipContent<TValue extends ValueType, TName extends NameT
     const wrapperCN = classNames('recharts-default-tooltip', wrapperClassName);
     const labelCN = classNames('recharts-tooltip-label', labelClassName);
 
-    if (hasLabel && labelFormatter) {
+    if (hasLabel && labelFormatter && payload !== undefined && payload !== null) {
       finalLabel = labelFormatter(label, payload);
     }
 

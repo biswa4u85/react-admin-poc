@@ -162,8 +162,7 @@ export const getMainColorOfGraphicItem = (item: ReactElement) => {
   return result;
 };
 
-// TODO: Formated -> Formatted.
-interface FormatedGraphicalItem {
+interface FormattedGraphicalItem {
   props: any;
   childIndex: number;
   item: any;
@@ -171,12 +170,12 @@ interface FormatedGraphicalItem {
 
 export const getLegendProps = ({
   children,
-  formatedGraphicalItems,
+  formattedGraphicalItems,
   legendWidth,
   legendContent,
 }: {
   children: any;
-  formatedGraphicalItems?: Array<FormatedGraphicalItem>;
+  formattedGraphicalItems?: Array<FormattedGraphicalItem>;
   legendWidth: number;
   legendContent?: any;
 }) => {
@@ -189,7 +188,7 @@ export const getLegendProps = ({
   if (legendItem.props && legendItem.props.payload) {
     legendData = legendItem.props && legendItem.props.payload;
   } else if (legendContent === 'children') {
-    legendData = (formatedGraphicalItems || []).reduce((result, { item, props }) => {
+    legendData = (formattedGraphicalItems || []).reduce((result, { item, props }) => {
       const data = props.sectors || props.data || [];
 
       return result.concat(
@@ -202,7 +201,7 @@ export const getLegendProps = ({
       );
     }, []);
   } else {
-    legendData = (formatedGraphicalItems || []).map(({ item }) => {
+    legendData = (formattedGraphicalItems || []).map(({ item }) => {
       const { dataKey, name, legendType, hide } = item.props;
 
       return {
@@ -375,7 +374,7 @@ export const getBarPosition = ({
   return result;
 };
 
-export const appendOffsetOfLegend = (offset: any, items: Array<FormatedGraphicalItem>, props: any, legendBox: any) => {
+export const appendOffsetOfLegend = (offset: any, items: Array<FormattedGraphicalItem>, props: any, legendBox: any) => {
   const { children, width, margin } = props;
   const legendWidth = width - (margin.left || 0) - (margin.right || 0);
   // const legendHeight = height - (margin.top || 0) - (margin.bottom || 0);
@@ -534,7 +533,10 @@ export const getTicksOfAxis = (axis: any, isGrid?: boolean, isAll?: boolean): Ti
   if (!axis) return null;
   const { scale } = axis;
   const { duplicateDomain, type, range } = axis;
-  let offset = (isGrid || isAll) && type === 'category' && scale.bandwidth ? scale.bandwidth() / 2 : 0;
+
+  const offsetForBand = axis.realScaleType === 'scaleBand' ? scale.bandwidth() / 2 : 2;
+  let offset = (isGrid || isAll) && type === 'category' && scale.bandwidth ? scale.bandwidth() / offsetForBand : 0;
+
   offset = axis.axisType === 'angleAxis' ? mathSign(range[0] - range[1]) * 2 * offset : offset;
 
   // The ticks setted by user should only affect the ticks adjacent to axis line
@@ -1047,6 +1049,10 @@ export const MIN_VALUE_REG = /^dataMin[\s]*-[\s]*([0-9]+([.]{1}[0-9]+){0,1})$/;
 export const MAX_VALUE_REG = /^dataMax[\s]*\+[\s]*([0-9]+([.]{1}[0-9]+){0,1})$/;
 
 export const parseSpecifiedDomain = (specifiedDomain: any, dataDomain: any, allowDataOverflow: boolean) => {
+  if (_.isFunction(specifiedDomain)) {
+    return specifiedDomain(dataDomain, allowDataOverflow);
+  }
+
   if (!_.isArray(specifiedDomain)) {
     return dataDomain;
   }
@@ -1112,7 +1118,7 @@ export const getBandSizeOfAxis = (axis: any, ticks?: Array<TickItem>, isBar?: bo
     return bandSize === Infinity ? 0 : bandSize;
   }
 
-  return 0;
+  return isBar ? undefined : 0;
 };
 /**
  * parse the domain of a category axis when a domain is specified
@@ -1138,7 +1144,7 @@ export const parseDomainOfCategoryAxis = (
 };
 
 export const getTooltipItem = (graphicalItem: any, payload: any) => {
-  const { dataKey, name, unit, formatter, tooltipType } = graphicalItem.props;
+  const { dataKey, name, unit, formatter, tooltipType, chartType } = graphicalItem.props;
 
   return {
     ...filterProps(graphicalItem),
@@ -1150,5 +1156,6 @@ export const getTooltipItem = (graphicalItem: any, payload: any) => {
     value: getValueByDataKey(payload, dataKey),
     type: tooltipType,
     payload,
+    chartType,
   };
 };
