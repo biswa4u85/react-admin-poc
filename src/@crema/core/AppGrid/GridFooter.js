@@ -1,8 +1,9 @@
 import React from 'react';
-import {Progress} from 'antd';
+import { Progress } from 'antd';
+import PropTypes from 'prop-types';
 import './index.style.less';
 
-const GridFooter = ({loading, footerText}) => {
+const GridFooter = ({ loading, footerText }) => {
   if (loading) {
     return (
       <div className='loader-progress'>
@@ -20,3 +21,11 @@ const GridFooter = ({loading, footerText}) => {
 };
 
 export default GridFooter;
+GridFooter.propTypes = {
+  loading: PropTypes.bool,
+  footerText: PropTypes.node,
+};
+GridFooter.defaultProps = {
+  loading: false,
+  footerText: '',
+};

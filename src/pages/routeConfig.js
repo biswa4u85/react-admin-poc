@@ -1,14 +1,15 @@
 import React from 'react';
-import { BiAlignLeft } from 'react-icons/bi';
+import { BsList } from 'react-icons/bs';
 import { MdOutlineAnalytics } from 'react-icons/md';
 import { FaRegHospital } from 'react-icons/fa';
+import { GrAddCircle } from 'react-icons/gr';
 import { RoutePermittedRole } from '../shared/constants/AppEnums';
 
 const sidebarRouteConfig = [
   {
     id: 'dashboards',
-    title: 'Application',
-    messageId: 'sidebar.application',
+    title: 'Dashboards',
+    messageId: 'sidebar.app.dashboard',
     permittedRole: RoutePermittedRole.superadmin,
     type: 'group',
     children: [
@@ -29,63 +30,29 @@ const sidebarRouteConfig = [
     ],
   },
   {
-    id: 'app',
-    title: 'Sample',
-    messageId: 'sidebar.sample',
+    id: 'celebrities',
+    title: 'Celebrities',
+    messageId: 'sidebar.app.celebrities',
     type: 'group',
     permittedRole: RoutePermittedRole.superadmin,
     children: [
       {
-        id: 'page-1',
-        title: 'Page 1',
-        messageId: 'sidebar.sample.page1',
+        id: 'list',
+        title: 'List',
+        messageId: 'sidebar.listitem',
         type: 'item',
-        icon: <BiAlignLeft />,
-        path: '/sample/page-1',
-      },
-      {
-        id: 'page-2',
-        title: 'Page 2',
-        messageId: 'sidebar.sample.page2',
-        type: 'item',
-        icon: <BiAlignLeft />,
-        path: '/sample/page-2',
-      },
-    ],
-  },
-
-  {
-    id: 'promo',
-    title: 'promosec',
-    messageId: 'sidebar.promo',
-    permittedRole: RoutePermittedRole.superadmin,
-    type: 'group',
-    children: [
-      {
-        id: 'promo',
-        title: 'promolist',
-        messageId: 'sidebar.app.promo.list',
-        icon: <MdOutlineAnalytics />,
-        path: '/promo/list',
+        icon: <BsList />,
+        path: '/celebrities/list',
       },
       {
         id: 'add',
-        title: 'promoadd',
-        messageId: 'sidebar.app.promo.add',
-        icon: <MdOutlineAnalytics />,
-        path: '/promo/addform',
+        title: 'Add New',
+        messageId: 'sidebar.addnew',
+        type: 'item',
+        icon: <GrAddCircle />,
+        path: '/celebrities/addform',
       },
-      {
-        id: 'edit',
-        title: 'promoedit',
-        messageId: 'sidebar.app.promo.edit',
-        icon: <MdOutlineAnalytics />,
-        path: '/promo/editform',
-      },
-   
     ],
-  }, 
-
-  
+  },
 ];
 export default sidebarRouteConfig;

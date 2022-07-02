@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import AppRowContainer from '../../../@crema/core/AppRowContainer';
 import { Col } from 'antd';
 import WelcomeCard from './WelcomeCard';
@@ -15,18 +16,21 @@ import OrderNTransaction from './OrderNTransaction';
 import TrafficSource from './TrafficSource';
 import { AppInfoView } from '../../../@crema';
 import { useDispatch } from 'react-redux';
-// import { onGetAnalyticsData } from '../../../redux/actions/Dashboard';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 
 const Analytics = () => {
   const dispatch = useDispatch();
+  const [analyticsData, setAnalyticsData] = useState(null)
 
   useEffect(() => {
-    // dispatch(onGetAnalyticsData());
-  }, [dispatch]);
+    const fetchData = async () => {
+      const result = await axios.get("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json")
+      setAnalyticsData(result.data)
+    }
+    fetchData();
+  }, [])
 
-  // const analyticsData = useSelector(({ dashboard }) => dashboard.analyticsData);
-  const analyticsData = {}
+  console.log(analyticsData)
 
   return (
     <>
@@ -90,7 +94,7 @@ const Analytics = () => {
         </AppRowContainer>
       ) : null}
 
-      <AppInfoView />
+      {/* <AppInfoView /> */}
     </>
   );
 };

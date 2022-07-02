@@ -12,12 +12,11 @@ import generateRoutes from '../../utility/RouteGenerator';
 import { useSelector } from 'react-redux'
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { initialUrl } from '../../../shared/constants/AppConst';
-
 const { Content } = Layout;
 
 const AppContentView = () => {
-  const isAuthenticated = useSelector((state) => state.auth.token)
   const user = useSelector((state) => state.auth.user)
+  const isAuthenticated = useSelector((state) => state.auth.token)
   return (
     <Content className='main-content-view'>
       <AppSuspense>

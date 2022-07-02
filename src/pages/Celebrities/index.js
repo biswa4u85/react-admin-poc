@@ -1,17 +1,17 @@
 import React from 'react';
 
 const Listings = React.lazy(() => import('./Listings'));
-const Promoaddform = React.lazy(() => import('./PromAddform'));
+const Addform = React.lazy(() => import('./Addform'));
 const Details = React.lazy(() => import('./Details'));
 
-export const celebritiesConfigs = [
+export const celebritieRouteConfigs = [
   {
     path: '/celebrities/list',
     element: <Listings />,
   },
   {
     path: '/celebrities/addform',
-    element: <Promoaddform />,
+    element: <Addform />,
   },
   {
     path: '/celebrities/details',

@@ -9,7 +9,7 @@ import Default from './Default';
 import HeaderUserLayout from './UserHeader';
 import HeaderUserMiniLayout from './UserMiniHeader';
 import MiniSidebarToggle from './MiniSidebarToggle';
-import { NavStyle } from '../../../shared/constants/AppEnums';
+import {NavStyle} from '../../../shared/constants/AppEnums';
 import HorHeaderFixed from './HorHeaderFixed';
 
 const Layouts = {

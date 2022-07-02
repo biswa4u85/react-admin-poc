@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
-import AppComponentCard from '../../@crema/core/AppComponentCard';
-import AppRowContainer from '../../@crema/core/AppRowContainer/AppRowSimpleContainer';
-import { Tag, Row, Col, Space, Form, Input, Button, } from 'antd';
-import StandardTable from '../common/StandardTable';
+import React, { useState, useEffect } from 'react';
+import IntlMessages from '../../@crema/utility/IntlMessages';
+import { useIntl } from 'react-intl';
+import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
+import AppRowContainer from '../../@crema/core/AppRowContainer';
+import { Button, Card, Checkbox, Form, Input, Tag, Row, Col, Space } from 'antd';
+import ComponentHeader from '../../@crema/core/AppComponentHeader';
+import StandardTable from '../Common/StandardTable';
+import { IoMdAdd } from 'react-icons/io';
 import { DoubleRightOutlined, EditOutlined, DeleteOutlined, } from '@ant-design/icons';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { adminLogin } from '../../store/AuthRedux'
 
 const columns = [
   {
@@ -80,35 +87,123 @@ const data = [
     address: 'Sidney No. 1 Lake Park',
     tags: ['cool', 'teacher'],
   },
+  {
+    key: '1',
+    name: 'John Brown',
+    age: 32,
+    address: 'New York No. 1 Lake Park',
+    tags: ['nice', 'developer'],
+  },
+  {
+    key: '2',
+    name: 'Jim Green',
+    age: 42,
+    address: 'London No. 1 Lake Park',
+    tags: ['loser'],
+  },
+  {
+    key: '3',
+    name: 'Joe Black',
+    age: 32,
+    address: 'Sidney No. 1 Lake Park',
+    tags: ['cool', 'teacher'],
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    age: 32,
+    address: 'New York No. 1 Lake Park',
+    tags: ['nice', 'developer'],
+  },
+  {
+    key: '2',
+    name: 'Jim Green',
+    age: 42,
+    address: 'London No. 1 Lake Park',
+    tags: ['loser'],
+  },
+  {
+    key: '3',
+    name: 'Joe Black',
+    age: 32,
+    address: 'Sidney No. 1 Lake Park',
+    tags: ['cool', 'teacher'],
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    age: 32,
+    address: 'New York No. 1 Lake Park',
+    tags: ['nice', 'developer'],
+  },
+  {
+    key: '2',
+    name: 'Jim Green',
+    age: 42,
+    address: 'London No. 1 Lake Park',
+    tags: ['loser'],
+  },
+  {
+    key: '3',
+    name: 'Joe Black',
+    age: 32,
+    address: 'Sidney No. 1 Lake Park',
+    tags: ['cool', 'teacher'],
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    age: 32,
+    address: 'New York No. 1 Lake Park',
+    tags: ['nice', 'developer'],
+  },
+  {
+    key: '2',
+    name: 'Jim Green',
+    age: 42,
+    address: 'London No. 1 Lake Park',
+    tags: ['loser'],
+  },
+  {
+    key: '3',
+    name: 'Joe Black',
+    age: 32,
+    address: 'Sidney No. 1 Lake Park',
+    tags: ['cool', 'teacher'],
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    age: 32,
+    address: 'New York No. 1 Lake Park',
+    tags: ['nice', 'developer'],
+  },
+  {
+    key: '2',
+    name: 'Jim Green',
+    age: 42,
+    address: 'London No. 1 Lake Park',
+    tags: ['loser'],
+  },
+  {
+    key: '3',
+    name: 'Joe Black',
+    age: 32,
+    address: 'Sidney No. 1 Lake Park',
+    tags: ['cool', 'teacher'],
+  },
 ];
 
-const Listings = () => {
-  return (
-    <>
-      <AppRowContainer>
-        <Col xs={24} xxl={12} key='form-g'>
-          <AppComponentCard
-            title={'Celebrities'}
-            link={'Celebrities'}
-            component={ListingsData}
-          />
-        </Col>
-      </AppRowContainer>
-    </>
-  );
-};
-
 const ListingsData = () => {
-  const [expand, setExpand] = useState(false);
   const [form] = Form.useForm();
   const [selectedRows, setSelectedRows] = useState([]);
+  const token = useSelector((state) => state.auth.token)
   const loading = false
-
+  const { messages } = useIntl();
   const handlePageChange = (page, size, searchVal = null) => {
     console.log('Received values of form: ', page);
   }
   const handleSelectRows = (page, size, searchVal = null) => {
-
   }
 
   return (
@@ -119,21 +214,75 @@ const ListingsData = () => {
         className='ant-advanced-search-form'
         onFinish={handlePageChange}>
         <Row gutter={24}>
-          <Form.Item
-            name='username'
-            label='Name'
-            rules={[
-              {
-                required: true,
-                message: 'Please input your name',
-              },
-            ]}>
-            <Input placeholder='Please input your name' />
-          </Form.Item>
+          <Col span={8}>
+            <Form.Item
+              name='username'
+              label='Name'
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your name',
+                },
+              ]}>
+              <Input placeholder='Please input your name' />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name='username'
+              label='Name'
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your name',
+                },
+              ]}>
+              <Input placeholder='Please input your name' />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name='username'
+              label='Name'
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your name',
+                },
+              ]}>
+              <Input placeholder='Please input your name' />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name='username'
+              label='Name'
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your name',
+                },
+              ]}>
+              <Input placeholder='Please input your name' />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name='username'
+              label='Name'
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your name',
+                },
+              ]}>
+              <Input placeholder='Please input your name' />
+            </Form.Item>
+          </Col>
         </Row>
         <Row>
           <Col span={24} >
-            <Button style={{ float: 'left' }} type='primary'>Add Product</Button>
+            <Button style={{ float: 'left' }} type='primary'><IoMdAdd /> Add Product</Button>
             <div style={{ textAlign: 'right' }}>
               <Button type='primary' htmlType='submit'>
                 Search
@@ -162,6 +311,27 @@ const ListingsData = () => {
   );
 };
 
-
+const Listings = () => {
+  return (
+    <div className='user-pages'>
+      <AppAnimateGroup type='bottom'>
+        <ComponentHeader
+          title='Celebrities'
+          // backUrl='Back'
+        />
+        <div className='user-container' key='a'>
+          <Card className='user-card user-card-lg'>
+            <AppRowContainer>
+              <Col xs={24} md={24}>
+                <ListingsData />
+              </Col>
+            </AppRowContainer>
+          </Card>
+          <br />
+        </div>
+      </AppAnimateGroup>
+    </div>
+  );
+};
 
 export default Listings;

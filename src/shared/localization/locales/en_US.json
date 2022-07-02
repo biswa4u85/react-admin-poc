@@ -383,6 +383,7 @@
   "invoice.thankYou": "Thank you for shopping with us.",
   "sidebar.application": "Application",
   "sidebar.app.dashboard": "Dashboards",
+  "sidebar.app.celebrities": "Celebrities",
   "sidebar.promo": "Promo",
   "sidebar.app.promo": "promo",
   "sidebar.app.promo.list": "List",
@@ -733,7 +734,9 @@
   "sidebar.layout.grid": "Grid",
   "sidebar.layout.layout": "Layout",
   "sidebar.layout.space": "Space",
-  "sidebar.components.layout": "Layout"
+  "sidebar.components.layout": "Layout",
+  "sidebar.listitem": "All Lists",
+  "sidebar.addnew": "Add New"
 }
 
 

@@ -1,4 +1,4 @@
-import {authRole, AuthType} from './AppEnums';
+import { authRole, AuthType } from './AppEnums';
 
 export const defaultUser = {
   displayName: 'John Alex',
@@ -9,4 +9,4 @@ export const defaultUser = {
   photoURL: '/assets/images/avatar/A11.jpg',
 };
 
-export const initialUrl = '/sample/page-1'; // this url will open after login
+export const initialUrl = '/celebrities/list'; // this url will open after login

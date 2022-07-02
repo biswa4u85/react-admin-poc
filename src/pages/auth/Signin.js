@@ -1,40 +1,41 @@
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import IntlMessages from '../../../@crema/utility/IntlMessages';
+import IntlMessages from '../../@crema/utility/IntlMessages';
 import { useIntl } from 'react-intl';
-import AppAnimateGroup from '../../../@crema/core/AppAnimateGroup';
-import AppRowContainer from '../../../@crema/core/AppRowContainer';
+import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
+import AppRowContainer from '../../@crema/core/AppRowContainer';
 import { Button, Card, Checkbox, Col, Form, Input } from 'antd';
-import './SigninFrappe.less';
-import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
-import { ReactComponent as Logo } from '../../../assets/user/login.svg';
+import './index.style.less';
+import AppPageMetadata from '../../@crema/core/AppPageMetadata';
+import { ReactComponent as Logo } from '../../assets/user/login.svg';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
-import { siteLogin } from '../../../store/AuthFrappeRedux'
+import { adminLogin } from '../../store/AuthRedux'
 
-const SigninFrappe = () => {
-  const { messages } = useIntl();
+const Signin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const token = useSelector((state) => state.authfrappe.token)
-  
+  const token = useSelector((state) => state.auth.token)
+
   const onFinish = (values) => {
-    dispatch(siteLogin(values))
+    values['loginType'] = "email"
+    dispatch(adminLogin(values))
   };
 
   useEffect(() => {
     if (token) {
-      navigate('/dashboards/health-care');
+      navigate('/celebrities/list');
     }
   }, [token]);
 
   const onGoToForgetPassword = () => {
-    navigate('/forget-password', { tab: 'jwtAuth' });
+    navigate('/forget-password');
   };
 
   function onRememberMe(e) {
     console.log(`checked = ${e.target.checked}`);
   }
 
+  const { messages } = useIntl();
   return (
     <div className='user-pages'>
       <AppAnimateGroup type='bottom'>
@@ -57,11 +58,15 @@ const SigninFrappe = () => {
                 <Form
                   className='user-form'
                   name='basic'
-                  initialValues={{ usr: "administrator", pwd: "admin" }}
+                  initialValues={{
+                    remember: true,
+                    email: 'demo@instastarz.com',
+                    password: 'demo@123',
+                  }}
                   onFinish={onFinish}
                 >
                   <Form.Item
-                    name='usr'
+                    name='email'
                     className='form-field'
                     rules={[
                       { required: true, message: 'Please input your Email!' },
@@ -70,7 +75,7 @@ const SigninFrappe = () => {
                   </Form.Item>
 
                   <Form.Item
-                    name='pwd'
+                    name='password'
                     className='form-field'
                     rules={[
                       { required: true, message: 'Please input your Password!' },
@@ -86,15 +91,15 @@ const SigninFrappe = () => {
                     name='remember'
                     valuePropName='checked'>
                     <>
-                      <Checkbox>
+                      <Checkbox onChange={onRememberMe}>
                         <IntlMessages id='common.rememberMe' />
                       </Checkbox>
+
                       <span className='user-field-action-link ml-auto' onClick={onGoToForgetPassword}>
                         <IntlMessages id='common.forgetPassword' />
                       </span>
                     </>
                   </Form.Item>
-
                   <Button
                     type='primary'
                     htmlType='submit'
@@ -120,4 +125,4 @@ const SigninFrappe = () => {
   );
 };
 
-export default SigninFrappe;
+export default Signin;

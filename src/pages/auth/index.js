@@ -1,14 +1,9 @@
 import React from 'react';
-
 const Signin = React.lazy(() => import('./Signin'));
 const Signup = React.lazy(() => import('./Signup'));
-const ForgotPassword = React.lazy(() => import('./ForgotPassword'));
-const ConfirmSignupAwsCognito = React.lazy(() =>
-  import('./ConfirmSignupAwsCognito'),
-);
-const ResetPasswordAwsCognito = React.lazy(() =>
-  import('./ResetPasswordAwsCognito'),
-);
+const ForgotPassword = React.lazy(() => import('./ForgetPassword'));
+const ResetPassword = React.lazy(() => import('./ResetPassword'));
+const UnlockScreen = React.lazy(() => import('./UnlockScreen'));
 
 export const authRouteConfig = [
   {
@@ -25,10 +20,10 @@ export const authRouteConfig = [
   },
   {
     path: '/confirm-signup',
-    element: <ConfirmSignupAwsCognito />,
+    element: <UnlockScreen />,
   },
   {
     path: '/reset-password',
-    element: <ResetPasswordAwsCognito />,
+    element: <ResetPassword />,
   },
 ];

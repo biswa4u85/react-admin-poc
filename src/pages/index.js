@@ -7,19 +7,15 @@ import { authRouteConfig } from './auth';
 import { dashboardConfig } from './dashboard';
 import { errorPagesConfigs } from './errorPages';
 import { profileConfig } from './profile';
-import { samplePagesConfigs } from './sample';
-import { promoPagesConfigs } from './promo';
-import { celebritiesConfigs } from './Celebrities';
+import { celebritieRouteConfigs } from './Celebrities';
 
 const authorizedStructure = {
   fallbackPath: '/signin',
   unAuthorizedComponent: <Error403 />,
   routes: [
     ...dashboardConfig,
-    ...samplePagesConfigs,
-    ...promoPagesConfigs,
     ...profileConfig,
-    ...celebritiesConfigs,
+    ...celebritieRouteConfigs,
   ],
 };
 

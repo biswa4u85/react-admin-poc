@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import { Avatar, Dropdown, List } from 'antd';
 import { FaChevronDown } from 'react-icons/fa';
 import './index.style.less';
-import { useSelector, useDispatch } from 'react-redux'
 import { useThemeContext } from '../../../../utility/AppContextProvider/ThemeContextProvider';
+import { useSelector, useDispatch } from 'react-redux'
 import { useSidebarContext } from '../../../../utility/AppContextProvider/SidebarContextProvider';
 import PropTypes from 'prop-types';
 import { logout } from '../../../../../store/AuthRedux'
@@ -19,11 +19,11 @@ const UserInfo = ({ hasColor }) => {
   const { isSidebarBgImage } = useSidebarContext();
 
   const getUserAvatar = () => {
-    if (user?.displayName) {
-      return user?.displayName.charAt(0).toUpperCase();
+    if (user.displayName) {
+      return user.displayName.charAt(0).toUpperCase();
     }
-    if (user?.email) {
-      return user?.email.charAt(0).toUpperCase();
+    if (user.email) {
+      return user.email.charAt(0).toUpperCase();
     }
   };
 
@@ -57,8 +57,8 @@ const UserInfo = ({ hasColor }) => {
               minWidth: 150,
             }}>
             <a className='cr-user-info-inner ant-dropdown-link'>
-              {user?.photoURL ? (
-                <Avatar className='cr-user-info-avatar' src={user?.photoURL} />
+              {user.photoURL ? (
+                <Avatar className='cr-user-info-avatar' src={user.photoURL} />
               ) : (
                 <Avatar className='cr-user-info-avatar'>
                   {getUserAvatar()}
@@ -70,7 +70,7 @@ const UserInfo = ({ hasColor }) => {
                     className={clsx('cr-user-name text-truncate', {
                       light: themeMode === 'light',
                     })}>
-                    {user?.displayName ? user?.displayName : 'admin user '}
+                    {user.displayName ? user.displayName : 'admin user '}
                   </h3>
                   <span className='cr-user-arrow'>
                     <FaChevronDown />
@@ -98,7 +98,7 @@ const UserInfo = ({ hasColor }) => {
               minWidth: 150,
             }}>
             <a className='cr-user-info-inner ant-dropdown-link'>
-              {user?.photoURL ? (
+              {user.photoURL ? (
                 <Avatar className='cr-user-info-avatar' src={user.photoURL} />
               ) : (
                 <Avatar className='cr-user-info-avatar'>
@@ -111,7 +111,7 @@ const UserInfo = ({ hasColor }) => {
                     className={clsx('cr-user-name text-truncate', {
                       light: themeMode === 'light',
                     })}>
-                    {user?.displayName ? user?.displayName : 'admin user '}
+                    {user.displayName ? user.displayName : 'admin user '}
                   </h3>
                   <span className='cr-user-arrow'>
                     <FaChevronDown />
