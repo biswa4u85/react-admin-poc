@@ -7,7 +7,7 @@ import AppAnimateGroup from '../AppAnimateGroup';
 
 const { Title } = Typography;
 
-const AppComponentHeader = ({ title, description, backUrl }) => {
+const AppComponentHeader = ({ title, description, backUrl ,icon}) => {
   return (
     <AppAnimateGroup type='top' height='auto' interval={100} duration={450}>
       <div className='container-header' key={'header'}>
@@ -32,6 +32,11 @@ const AppComponentHeader = ({ title, description, backUrl }) => {
             </Button>
           </div>
         ) : null}
+
+        
+          <div>{icon}</div>
+        
+
       </div>
     </AppAnimateGroup>
   );

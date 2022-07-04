@@ -52,6 +52,7 @@ const sidebarRouteConfig = [
         icon: <GrAddCircle />,
         path: '/celebrities/addform',
       },
+      
     ],
   },
 ];

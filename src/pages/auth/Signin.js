@@ -4,6 +4,7 @@ import { useIntl } from 'react-intl';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import AppRowContainer from '../../@crema/core/AppRowContainer';
 import { Button, Card, Checkbox, Col, Form, Input } from 'antd';
+import FormValidate from '../../common/FormValidate'
 import './index.style.less';
 import AppPageMetadata from '../../@crema/core/AppPageMetadata';
 import { ReactComponent as Logo } from '../../assets/user/login.svg';
@@ -16,9 +17,15 @@ const Signin = () => {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
 
+  // const onFinish = (values) => {
+  //   console.log(values)
+  //   values['loginType'] = "email"
+  //   dispatch(adminLogin(values))
+  // };
   const onFinish = (values) => {
-    values['loginType'] = "email"
-    dispatch(adminLogin(values))
+    console.log('Success:', values);
+    let params = values
+    dispatch(adminLogin(params))
   };
 
   useEffect(() => {
@@ -59,9 +66,9 @@ const Signin = () => {
                   className='user-form'
                   name='basic'
                   initialValues={{
-                    remember: true,
-                    email: 'demo@instastarz.com',
-                    password: 'demo@123',
+                    // remember: true,
+                    // email: 'demo@instastarz.com',
+                    // password: 'demo@123',
                   }}
                   onFinish={onFinish}
                 >
