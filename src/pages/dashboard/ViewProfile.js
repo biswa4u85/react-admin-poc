@@ -4,9 +4,11 @@ import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { AiFillBell } from "react-icons/ai";
 import { useSelector, useDispatch } from 'react-redux'
+import { Link, useNavigate } from "react-router-dom";
 import { getProfile } from '../../store/AuthRedux'
 
 const FormDetails = () => {
+    let navigate = useNavigate();
     const dispatch = useDispatch()
     const token = useSelector((state) => state.auth.token)
     const userdata = useSelector((state) => state.auth.userdata)
@@ -31,7 +33,9 @@ const FormDetails = () => {
                                 <Breadcrumb.Item href=''>View Profile</Breadcrumb.Item>
                             </Breadcrumb>
                         </Space>
-                        <Button type='primary' style={{ float: "right" }}>
+                        <Button type='primary' style={{ float: "right" }}
+                         onClick={() => navigate('/dashboards/editProfile')}
+                         >
                             Edit
                         </Button>
                     </Col>

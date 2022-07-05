@@ -6,10 +6,16 @@ import { UploadOutlined, } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux'
 
 const FormDetails = () => {
+    const dispatch = useDispatch()
+    const token = useSelector((state) => state.auth.token)
     const userdata = useSelector((state) => state.auth.userdata)
+    const pageActive = useRef(false);
 
     const onFinish = (values) => {
         console.log(values)
+        // let params = { ...values, token, id: singledata._id }
+        // pageActive.current = true;
+        // dispatch(upDate(params))
     };
 
     const tailLayout = {
@@ -18,8 +24,11 @@ const FormDetails = () => {
             span: 16,
         },
     };
+    // console.log(userdata)
     return (
-        <Form name='dynamic_rule' onFinish={onFinish}>
+        <Form name='dynamic_rule'
+        initialValues={userdata}
+         onFinish={onFinish}>
             <Card className='user-card user-card-lg'>
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
                     <Col xs={24} lg={24} key='collapse-a' style={{ borderBottom: "1px solid #ccc ", paddingBottom: "10px" }}>
