@@ -24,7 +24,7 @@ const Signin = () => {
 
   useEffect(() => {
     if (token) {
-      navigate('/celebrities/list');
+      navigate('/dashboards/viewprofile');
     }
   }, [token]);
 

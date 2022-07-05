@@ -3,13 +3,22 @@ import { Button, Breadcrumb, Form, Row, Col, Input, Space, Image, Select, Switch
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { AiFillBell } from "react-icons/ai";
+import { useSelector, useDispatch } from 'react-redux'
+import { getProfile } from '../../store/AuthRedux'
 
 const FormDetails = () => {
+    const dispatch = useDispatch()
+    const token = useSelector((state) => state.auth.token)
+    const userdata = useSelector((state) => state.auth.userdata)
+
+    
 
     const onFinish = (values) => {
         console.log(values)
     };
-
+    useEffect(() => {
+        // dispatch(getProfile({token}))
+      }, [])
 
     return (
         <Form name='dynamic_rule' onFinish={onFinish}>

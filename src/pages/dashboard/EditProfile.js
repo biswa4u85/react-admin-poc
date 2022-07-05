@@ -3,8 +3,10 @@ import { Button, Breadcrumb, Form, Row, Col, Input, Space, Upload, Select, Switc
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { UploadOutlined, } from '@ant-design/icons';
+import { useSelector, useDispatch } from 'react-redux'
 
 const FormDetails = () => {
+    const userdata = useSelector((state) => state.auth.userdata)
 
     const onFinish = (values) => {
         console.log(values)
@@ -28,7 +30,7 @@ const FormDetails = () => {
 
 
 
-                        <Form name='dynamic_rule' onFinish={onFinish}>
+                        {/* <Form name='dynamic_rule' onFinish={onFinish}> */}
                             <Card className='user-card user-card-lg'>
                                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
                                     <Col xs={24} lg={24} key='collapse-a'>
@@ -114,7 +116,8 @@ const FormDetails = () => {
                                             <Input placeholder='Please enter your Re-Enter Password' />
                                         </Form.Item>
 
-                                        <Form.Item>
+                                        <Form.Item 
+                                        {...formItemLayout}>
                                             <Button type='primary' htmlType='submit'>
                                                 Submit
                                             </Button>
@@ -123,7 +126,7 @@ const FormDetails = () => {
                                     </Col>
                                 </Row>
                             </Card>
-                        </Form>
+                        {/* </Form> */}
 
 
                     </Col>

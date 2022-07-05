@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiPostCall } from '../utility/site-apis'
+import { apiPostCall,apiGetCall } from '../utility/site-apis'
 import { message } from 'antd';
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
   error: null,
   user: null,
   token: null,
+  userdata:{},
 }
 
 export const adminLogin = createAsyncThunk(
@@ -20,6 +21,20 @@ export const adminLogin = createAsyncThunk(
     return response.data
   }
 )
+
+export const getProfile = createAsyncThunk(
+  'auth/getProfile',
+  async (params, { rejectWithValue }) => {
+    console.log(params)
+    const response = await apiGetCall(`/user/`, params)
+    console.log(response)
+    if (response.data.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    return response.data
+  }
+)
+
 
 export const counterSlice = createSlice({
   name: 'auth',
@@ -46,6 +61,21 @@ export const counterSlice = createSlice({
       state.error = null
       state.token = action?.payload?.data?.Authorization
       state.user = action?.payload.data
+    },
+    // getProfile
+    [getProfile.pending]: (state) => {
+      state.isFetching = true
+      state.error = null
+    },
+    [getProfile.rejected]: (state, action) => {
+      message.error(action?.payload?.message);
+      state.isFetching = false
+      state.error = action?.payload?.message
+    },
+    [getProfile.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.userdata = action?.payload?.data?.data
     },
   }
 
