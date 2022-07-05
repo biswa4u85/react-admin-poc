@@ -10,7 +10,12 @@ const FormDetails = () => {
         console.log(values)
     };
 
-
+    const tailLayout = {
+        wrapperCol: {
+            offset: 8,
+            span: 16,
+        },
+    };
     return (
         <Form name='dynamic_rule' onFinish={onFinish}>
             <Card className='user-card user-card-lg'>
@@ -28,108 +33,108 @@ const FormDetails = () => {
 
 
 
-                        <Form name='dynamic_rule' onFinish={onFinish}>
-                            <Card className='user-card user-card-lg'>
-                                <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
-                                    <Col xs={24} lg={24} key='collapse-a'>
-                                        <h2>Section One</h2>
-                                    </Col>
-                                    <Col xs={24} lg={24} key='collapse-a'>
-                                        <Form.Item
-                                            {...formItemLayout}
-                                            name='username'
-                                            label='Name'
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'Please input your name',
-                                                },
-                                            ]}>
-                                            <Input placeholder='Please input your name' />
-                                        </Form.Item>
-                                        <Form.Item {...formTailLayout}
-                                            name='profile'
-                                            label="Profile Image"
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'Please add Profile Image',
-                                                },
-                                            ]}>
 
-                                            <Upload style={{ marginLeft: 0 }} >
-                                                <Button icon={<UploadOutlined />}>Upload</Button>
-                                            </Upload>
+                        <Card className='user-card user-card-lg'>
+                            <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
+                                <Col xs={24} lg={24} key='collapse-a'>
+                                    <h2>Section One</h2>
+                                </Col>
+                                <Col xs={24} lg={24} key='collapse-a'>
+                                    <Form.Item
+                                        {...formItemLayout}
+                                        name='username'
+                                        label='Name'
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please input your name',
+                                            },
+                                        ]}>
+                                        <Input placeholder='Please input your name' />
+                                    </Form.Item>
+                                    <Form.Item {...formTailLayout}
+                                        name='profile'
+                                        label="Profile Image"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please add Profile Image',
+                                            },
+                                        ]}>
 
-                                        </Form.Item>
+                                        <Upload style={{ marginLeft: 0 }} >
+                                            <Button icon={<UploadOutlined />}>Upload</Button>
+                                        </Upload>
 
-                                        <Form.Item
-                                            {...formItemLayout}
-                                            name='stagename'
-                                            label='Username / Email'
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'Please enter your Email',
-                                                },
-                                            ]}>
-                                            <Input placeholder='Please enter your Email' />
-                                        </Form.Item>
-                                        <Form.Item
-                                            {...formItemLayout}
-                                            name='managername'
-                                            label='Phone Number'
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'Please enter Manager Name',
-                                                },
-                                            ]}>
-                                            <Input placeholder='Please enter Manager Name' />
-                                        </Form.Item>
+                                    </Form.Item>
 
-                                        <Form.Item
-                                            {...formItemLayout}
-                                            name='stagename'
-                                            label='New Password'
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'Please enter your Password',
-                                                },
-                                            ]}>
-                                            <Input placeholder='Please enter your Password' />
-                                        </Form.Item>
+                                    <Form.Item
+                                        {...formItemLayout}
+                                        name='stagename'
+                                        label='Username / Email'
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please enter your Email',
+                                            },
+                                        ]}>
+                                        <Input placeholder='Please enter your Email' />
+                                    </Form.Item>
+                                    <Form.Item
+                                        {...formItemLayout}
+                                        name='managername'
+                                        label='Phone Number'
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please enter Manager Name',
+                                            },
+                                        ]}>
+                                        <Input placeholder='Please enter Manager Name' />
+                                    </Form.Item>
 
-                                        <Form.Item
-                                            {...formItemLayout}
-                                            name='stagename'
-                                            label='Re-Enter Password'
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'Please enter your Re-Enter Password',
-                                                },
-                                            ]}>
-                                            <Input placeholder='Please enter your Re-Enter Password' />
-                                        </Form.Item>
+                                    <Form.Item
+                                        {...formItemLayout}
+                                        name='stagename'
+                                        label='New Password'
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please enter your Password',
+                                            },
+                                        ]}>
+                                        <Input placeholder='Please enter your Password' />
+                                    </Form.Item>
 
-                                        <Form.Item>
+                                    <Form.Item
+                                        {...formItemLayout}
+                                        name='stagename'
+                                        label='Re-Enter Password'
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please enter your Re-Enter Password',
+                                            },
+                                        ]}>
+                                        <Input placeholder='Please enter your Re-Enter Password' />
+                                    </Form.Item>
+                                    <Form.Item {...tailLayout}>
+                                        <Space size='large' >
                                             <Button type='primary' htmlType='submit'>
-                                                Submit
+                                                Save
                                             </Button>
-                                        </Form.Item>
-
-                                    </Col>
-                                </Row>
-                            </Card>
-                        </Form>
-
-
+                                            <Button htmlType='submit'>
+                                                Cancel
+                                            </Button>
+                                        </Space>
+                                    </Form.Item>
+                                </Col>
+                            </Row>
+                        </Card>
                     </Col>
                 </Row>
             </Card>
-        </Form>
+        </Form >
     );
 };
 
