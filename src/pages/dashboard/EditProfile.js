@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import { Button, Breadcrumb, Form, Row, Col, Input, Space, Upload, Select, Switch, Card } from 'antd';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
@@ -27,7 +27,7 @@ const FormDetails = () => {
     // console.log(userdata)
     return (
         <Form name='dynamic_rule'
-        initialValues={userdata}
+        // initialValues={userdata}
          onFinish={onFinish}>
             <Card className='user-card user-card-lg'>
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
