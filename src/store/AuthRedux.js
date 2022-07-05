@@ -12,12 +12,11 @@ const initialState = {
 export const adminLogin = createAsyncThunk(
   'auth/adminLogin',
   async (params, { rejectWithValue }) => {
-    console.log(params);
     const response = await apiPostCall(`/user/adminLogin`, params)
-    console.log(response);
     if (response.data.status === 'error') {
       return rejectWithValue(response.data)
     }
+    response.data.data['roles'] = ['super-admin']
     return response.data
   }
 )
@@ -43,11 +42,10 @@ export const counterSlice = createSlice({
       state.error = action?.payload?.message
     },
     [adminLogin.fulfilled]: (state, action) => {
-      console.log(action.payload);
       state.isFetching = false
       state.error = null
       state.token = action?.payload?.data?.Authorization
-      state.user = action?.payload?.data
+      state.user = action?.payload.data
     },
   }
 

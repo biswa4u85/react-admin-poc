@@ -17,13 +17,7 @@ const Signin = () => {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
 
-  // const onFinish = (values) => {
-  //   console.log(values)
-  //   values['loginType'] = "email"
-  //   dispatch(adminLogin(values))
-  // };
   const onFinish = (values) => {
-    console.log('Success:', values);
     let params = values
     dispatch(adminLogin(params))
   };
@@ -66,9 +60,9 @@ const Signin = () => {
                   className='user-form'
                   name='basic'
                   initialValues={{
-                    // remember: true,
-                    // email: 'demo@instastarz.com',
-                    // password: 'demo@123',
+                    remember: true,
+                    email: 'someAdmin1@disco.com',
+                    password: 'somePassword@123',
                   }}
                   onFinish={onFinish}
                 >

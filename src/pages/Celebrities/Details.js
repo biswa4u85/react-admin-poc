@@ -5,7 +5,6 @@ import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import AppRowContainer from '../../@crema/core/AppRowContainer';
 import { Button, Card, Checkbox, Form, Input, Tag, Row, Col, Space, Descriptions } from 'antd';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
-import StandardTable from '../common/StandardTable';
 import { IoMdAdd } from 'react-icons/io';
 import { DoubleRightOutlined, EditOutlined, DeleteOutlined, } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
