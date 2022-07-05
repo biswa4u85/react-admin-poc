@@ -1,23 +1,23 @@
-import React, {useEffect} from 'react';
-import {Layout} from 'antd';
-import {useUrlSearchParams} from 'use-url-search-params';
+import React, { useEffect } from 'react';
+import { Layout } from 'antd';
+import { useUrlSearchParams } from 'use-url-search-params';
 import './layout.style.less';
-import {AppContentView} from '../../index';
+import { AppContentView } from '../../index';
 import Layouts from './Layouts';
-import {LayoutType} from '../../../shared/constants/AppEnums';
+import { LayoutType } from '../../../shared/constants/AppEnums';
 import AppScrollbar from '../AppScrollbar';
 import {
   useLayoutActionsContext,
   useLayoutContext,
 } from '../../utility/AppContextProvider/LayoutContextProvider';
 import { useSelector } from 'react-redux'
-import {useSidebarActionsContext} from '../../utility/AppContextProvider/SidebarContextProvider';
+import { useSidebarActionsContext } from '../../utility/AppContextProvider/SidebarContextProvider';
 
 const AppLayout = () => {
   const isAuthenticated = useSelector((state) => state.auth.token)
-  const {navStyle, layoutType} = useLayoutContext();
-  const {updateNavStyle} = useLayoutActionsContext();
-  const {updateMenuStyle, setSidebarBgImage} = useSidebarActionsContext();
+  const { navStyle, layoutType } = useLayoutContext();
+  const { updateNavStyle } = useLayoutActionsContext();
+  const { updateMenuStyle, setSidebarBgImage } = useSidebarActionsContext();
   const [params] = useUrlSearchParams();
 
   const AppLayout = Layouts[navStyle];

@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiPostCall,apiGetCall } from '../utility/site-apis'
+import { apiPostCall, apiGetCall } from '../utility/site-apis'
 import { message } from 'antd';
 
 const initialState = {
+  isFetchingLogin: false,
   isFetching: false,
   error: null,
   user: null,
   token: null,
-  userdata:{},
+  userdata: null,
 }
 
 export const adminLogin = createAsyncThunk(
@@ -25,9 +26,7 @@ export const adminLogin = createAsyncThunk(
 export const getProfile = createAsyncThunk(
   'auth/getProfile',
   async (params, { rejectWithValue }) => {
-    console.log(params)
-    const response = await apiGetCall(`/user/`, params)
-    console.log(response)
+    const response = await apiGetCall(`/user`, params)
     if (response.data.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -48,16 +47,16 @@ export const counterSlice = createSlice({
   extraReducers: {
     // adminLogin
     [adminLogin.pending]: (state) => {
-      state.isFetching = true
+      state.isFetchingLogin = true
       state.error = null
     },
     [adminLogin.rejected]: (state, action) => {
       message.error(action?.payload?.message);
-      state.isFetching = false
+      state.isFetchingLogin = false
       state.error = action?.payload?.message
     },
     [adminLogin.fulfilled]: (state, action) => {
-      state.isFetching = false
+      state.isFetchingLogin = false
       state.error = null
       state.token = action?.payload?.data?.Authorization
       state.user = action?.payload.data
@@ -75,7 +74,7 @@ export const counterSlice = createSlice({
     [getProfile.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
-      state.userdata = action?.payload?.data?.data
+      state.userdata = action?.payload
     },
   }
 

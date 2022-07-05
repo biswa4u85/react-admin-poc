@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux'
 
 const AuthRoutes = ({ children }) => {
-  const isFetching = useSelector((state) => state.auth.isFetching)
+  const isFetching = useSelector((state) => state.auth.isFetchingLogin)
   return isFetching ? <AppLoader /> : <>{children}</>;
 };
 

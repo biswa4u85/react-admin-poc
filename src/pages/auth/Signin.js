@@ -4,7 +4,6 @@ import { useIntl } from 'react-intl';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import AppRowContainer from '../../@crema/core/AppRowContainer';
 import { Button, Card, Checkbox, Col, Form, Input } from 'antd';
-import FormValidate from '../../common/FormValidate'
 import './index.style.less';
 import AppPageMetadata from '../../@crema/core/AppPageMetadata';
 import { ReactComponent as Logo } from '../../assets/user/login.svg';
@@ -18,6 +17,7 @@ const Signin = () => {
   const token = useSelector((state) => state.auth.token)
 
   const onFinish = (values) => {
+    //Biswa - why use params
     let params = values
     dispatch(adminLogin(params))
   };
@@ -108,7 +108,6 @@ const Signin = () => {
                     <IntlMessages id='common.login' />
                   </Button>
                 </Form>
-
                 <div className='user-card-footer'>
                   <span>
                     <IntlMessages id='common.dontHaveAccount' />

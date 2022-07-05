@@ -62,7 +62,7 @@ export function apiGetCall(path, params) {
   }
   return axiosAPI.get(newUrl, { headers: { 'Authorization': token } })
     .then((response) => {
-      return response
+      return response.data
     })
     .catch((error) => {
       if (error.response) {

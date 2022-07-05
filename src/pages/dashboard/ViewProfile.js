@@ -13,16 +13,17 @@ const FormDetails = () => {
     const token = useSelector((state) => state.auth.token)
     const userdata = useSelector((state) => state.auth.userdata)
 
-    
-
     const onFinish = (values) => {
         console.log(values)
     };
     useEffect(() => {
-        // dispatch(getProfile({token}))
-      }, [])
+        dispatch(getProfile({ token }))
+    }, [])
+
+    console.log(userdata)
 
     return (
+        //Biswa - Remove Form, why use key='collapse-a'
         <Form name='dynamic_rule' onFinish={onFinish}>
             <Card className='user-card user-card-lg'>
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
@@ -34,8 +35,8 @@ const FormDetails = () => {
                             </Breadcrumb>
                         </Space>
                         <Button type='primary' style={{ float: "right" }}
-                         onClick={() => navigate('/dashboards/editProfile')}
-                         >
+                            onClick={() => navigate('/dashboards/editProfile')}
+                        >
                             Edit
                         </Button>
                     </Col>
@@ -97,7 +98,6 @@ const ViewProfile = () => {
             <AppAnimateGroup type='bottom'>
                 <ComponentHeader
                     title='View Profile'
-                // icon=<AiFillBell/>
                 />
                 <div><AiFillBell /></div>
                 <div className='user-container' key='a'>

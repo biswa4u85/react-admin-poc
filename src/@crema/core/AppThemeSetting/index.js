@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
-import {Button, Drawer, Switch} from 'antd';
-import {layoutTypes, navStyles} from '../../services/db/navigationStyle';
+import React, { useState } from 'react';
+import { Button, Drawer, Switch } from 'antd';
+import { layoutTypes, navStyles } from '../../services/db/navigationStyle';
 import clsx from 'clsx';
 import IntlMessages from '../../utility/IntlMessages';
-import {CheckOutlined} from '@ant-design/icons';
-import {LayoutType, ThemeDirection} from '../../../shared/constants/AppEnums';
+import { CheckOutlined } from '@ant-design/icons';
+import { LayoutType, ThemeDirection } from '../../../shared/constants/AppEnums';
 import AppScrollbar from '../AppScrollbar';
 import './index.style.less';
-import {FiSettings} from 'react-icons/fi';
+import { FiSettings } from 'react-icons/fi';
 import {
   useLayoutActionsContext,
   useLayoutContext,
@@ -25,7 +25,7 @@ const AppThemeSetting = () => {
     layoutType,
   } = useLayoutContext();
 
-  const {setFooter, updateDirection, updateNavStyle, updateLayoutType} =
+  const { setFooter, updateDirection, updateNavStyle, updateLayoutType } =
     useLayoutActionsContext();
 
   const onLayoutChange = (layoutType) => {
@@ -44,7 +44,7 @@ const AppThemeSetting = () => {
       <Button
         className='customizer-btn'
         onClick={() => setCustomizerStatus(!open)}>
-        <FiSettings className='ant-spin-dot-spin' style={{fontSize: 20}} />
+        <FiSettings className='ant-spin-dot-spin' style={{ fontSize: 20 }} />
       </Button>
       <Drawer
         placement={direction === 'ltr' ? 'right' : 'left'}
@@ -64,7 +64,6 @@ const AppThemeSetting = () => {
           </div>
           <div className='customize-main'>
             <SidebarSettings />
-
             <div className='customize-item'>
               <div className='customize-switch-view'>
                 <h4>
@@ -144,15 +143,6 @@ const AppThemeSetting = () => {
                 />
               </div>
             </div>
-
-            {/*
-            <div className='customize-item'>
-              <h4>Footer Type</h4>
-              <Select className='customize-select-box'>
-                <Option value={FooterType.FIXED}>Fixed</Option>
-                <Option value={FooterType.FLUID}>Fluid</Option>
-              </Select>
-            </div>*/}
           </div>
         </AppScrollbar>
       </Drawer>
