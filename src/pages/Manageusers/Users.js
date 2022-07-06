@@ -3,6 +3,8 @@ import { Button, Menu, Table, Row, Col, Input, Space, InputNumber, Upload, Selec
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { BsSearch } from "react-icons/bs";
+import { useSelector, useDispatch } from 'react-redux'
+import { getUser} from '../../store/AuthRedux'
 
 const menu = (
     <Menu>
@@ -13,6 +15,15 @@ const menu = (
 
 const FormDetails = () => {
 
+    const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token)
+  const manageusers = useSelector((state) => state.auth.manageusers)
+
+
+  useEffect(() => {
+    dispatch(getUser({ token }))
+  }, [])
+console.log(manageusers)
     const onFinish = (values) => {
         console.log(values)
     };
@@ -32,19 +43,19 @@ const FormDetails = () => {
 
         {
             title: 'User ID',
-            dataIndex: 'age',
-            key: 'age',
+            dataIndex: '_id',
+            key: 'userID',
             width: 150,
         },
         {
             title: 'Phone Number',
-            dataIndex: 'address',
-            key: 'address 1',
+            dataIndex: 'phone',
+            key: 'phone',
             ellipsis: true,
         },
         {
             title: 'Gender',
-            dataIndex: 'address',
+            dataIndex: 'profile.gender',
             key: 'address 2',
             ellipsis: true,
         },
@@ -62,27 +73,16 @@ const FormDetails = () => {
         },
         {
             title: 'Status',
-            dataIndex: 'address',
+            dataIndex: 'online',
             key: 'address 4',
             ellipsis: true,
         },
         {
             title: 'Date Registered',
-            dataIndex: 'address',
+            dataIndex: 'updatedAt',
             key: 'address 4',
             ellipsis: true,
         },
-    ];
-
-    const data = [
-        {
-            key: '1',
-            name: 'Nike',
-            address: 'New York No. 1 Lake Park, New York No. 1 Lake Park',
-            age: "3,496",
-            tags: ['virat kohli William Smith,john'],
-        },
-       
     ];
 
     return (
@@ -110,7 +110,7 @@ const FormDetails = () => {
                         </Space>
                     </Col>
                 </Row>
-                <Table columns={columns} dataSource={data} />;
+                <Table columns={columns} dataSource={manageusers} />;
             </Card>
         </>
     );
