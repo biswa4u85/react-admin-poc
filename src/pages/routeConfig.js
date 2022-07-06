@@ -63,22 +63,22 @@ const sidebarRouteConfig = [
     permittedRole: RoutePermittedRole.superadmin,
     children: [
       
-      {
-        id: 'add',
-        title: 'Add New',
-        messageId: 'sidebar.addnew',
-        type: 'item',
-        icon: <GrAddCircle />,
-        path: '/manage/managelist',
-      },
-      {
-        id: 'add',
-        title: 'Add New',
-        messageId: 'sidebar.addnew',
-        type: 'item',
-        icon: <GrAddCircle />,
-        path: '/manage/addnewbrand',
-      },
+      // {
+      //   id: 'add',
+      //   title: 'Add New',
+      //   messageId: 'sidebar.addnew',
+      //   type: 'item',
+      //   icon: <GrAddCircle />,
+      //   path: '/manage/managelist',
+      // },
+      // {
+      //   id: 'add',
+      //   title: 'Add New',
+      //   messageId: 'sidebar.addnew',
+      //   type: 'item',
+      //   icon: <GrAddCircle />,
+      //   path: '/manage/addnewbrand',
+      // },
       
     ],
   },
@@ -91,14 +91,22 @@ const sidebarRouteConfig = [
     permittedRole: RoutePermittedRole.superadmin,
     children: [
       
-      {
-        id: 'add',
-        title: 'Add New',
-        messageId: 'sidebar.addnew',
-        type: 'item',
-        icon: <GrAddCircle />,
-        path: '/manageusers/users',
-      },
+      // {
+      //   id: 'add',
+      //   title: 'Add New',
+      //   messageId: 'sidebar.addnew',
+      //   type: 'item',
+      //   icon: <GrAddCircle />,
+      //   path: '/manageusers/users',
+      // },
+      // {
+      //   id: 'add',
+      //   title: 'Add New',
+      //   messageId: 'sidebar.addnew',
+      //   type: 'item',
+      //   icon: <GrAddCircle />,
+      //   path: '/manageusers/viewuser',
+      // },
       
       
     ],
