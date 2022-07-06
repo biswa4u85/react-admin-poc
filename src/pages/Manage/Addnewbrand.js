@@ -13,7 +13,7 @@ const FormDetails = () => {
 
     const onFinish = (values) => {
         console.log(values)
-        // let params = { ...values, token, id: userdata._id }
+        // let params = { ...values, token, id: singledata._id }
         // pageActive.current = true;
         // dispatch(upDate(params))
     };
@@ -24,36 +24,30 @@ const FormDetails = () => {
             span: 16,
         },
     };
-    console.log(userdata)
+    // console.log(userdata)
     return (
         <Form name='dynamic_rule'
-        initialValues={userdata}
+        // initialValues={userdata}
          onFinish={onFinish}>
             <Card className='user-card user-card-lg'>
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
                     <Col xs={24} lg={24} key='collapse-a' style={{ borderBottom: "1px solid #ccc ", paddingBottom: "10px" }}>
                         <Space>
                             <Breadcrumb separator='>'>
-                                <Breadcrumb.Item>Dshboards</Breadcrumb.Item>
-                                <Breadcrumb.Item href=''>Edit Profile</Breadcrumb.Item>
+                                <Breadcrumb.Item>Manager Brand</Breadcrumb.Item>
+                                <Breadcrumb.Item href=''>Add New Brand</Breadcrumb.Item>
                             </Breadcrumb>
                         </Space>
                     </Col>
 
                     <Col xs={24} lg={24} key='collapse-a' style={{ margin: '50px 0' }}>
-
-
-
-
                         <Card className='user-card user-card-lg'>
                             <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
-                                <Col xs={24} lg={24} key='collapse-a'>
-                                
-                                </Col>
+                                <Col xs={24} lg={24} key='collapse-a'></Col>
                                 <Col xs={24} lg={24} key='collapse-a'>
                                     <Form.Item
                                         {...formItemLayout}
-                                        name='profile.name'
+                                        name='username'
                                         label='Name'
                                         rules={[
                                             {
@@ -63,6 +57,20 @@ const FormDetails = () => {
                                         ]}>
                                         <Input placeholder='Please input your name' />
                                     </Form.Item>
+                                    <Form.Item
+                                        {...formItemLayout}
+                                        name='stagename'
+                                        label='Username / Email'
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please enter your Email',
+                                            },
+                                        ]}>
+                                        <Input placeholder='Please enter your Email' />
+                                    </Form.Item>
+
+
                                     <Form.Item {...formTailLayout}
                                         name='profile'
                                         label="Profile Image"
@@ -79,18 +87,7 @@ const FormDetails = () => {
 
                                     </Form.Item>
 
-                                    <Form.Item
-                                        {...formItemLayout}
-                                        name='email'
-                                        label='Username / Email'
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please enter your Email',
-                                            },
-                                        ]}>
-                                        <Input placeholder='Please enter your Email' />
-                                    </Form.Item>
+                                    
                                     <Form.Item
                                         {...formItemLayout}
                                         name='managername'
@@ -169,7 +166,7 @@ const formTailLayout = {
 };
 
 
-const Editrofile = () => {
+const Addnewbrand = () => {
     return (
         <div className='user-pages'>
             <AppAnimateGroup type='bottom'>
@@ -186,4 +183,4 @@ const Editrofile = () => {
 };
 
 
-export default Editrofile;
+export default Addnewbrand;
