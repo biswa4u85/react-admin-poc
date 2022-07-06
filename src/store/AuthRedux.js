@@ -9,6 +9,8 @@ const initialState = {
   user: null,
   token: null,
   userdata: null,
+  manageusers:[],
+  
 }
 
 export const adminLogin = createAsyncThunk(
@@ -36,6 +38,24 @@ export const getProfile = createAsyncThunk(
     return newData
   }
 )
+export const getUser = createAsyncThunk(
+  'auth/getUser',
+  async (params, { rejectWithValue }) => {
+    const response = await apiGetCall(`/user/getList`, params)
+    if (response.data.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    // let profile = response.data?.profile
+    // console.log(profile)
+    // delete profile._id
+    // let newData = {...response.data, ...profile}
+    // return newData
+    return response.data
+    
+  }
+)
+
+
 
 
 export const counterSlice = createSlice({
@@ -78,6 +98,21 @@ export const counterSlice = createSlice({
       state.isFetching = false
       state.error = null
       state.userdata = action?.payload
+    },
+    // getUser
+    [getUser.pending]: (state) => {
+      state.isFetching = true
+      state.error = null
+    },
+    [getUser.rejected]: (state, action) => {
+      message.error(action?.payload?.message);
+      state.isFetching = false
+      state.error = action?.payload?.message
+    },
+    [getUser.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.manageusers = action?.payload?.data
     },
   }
 
