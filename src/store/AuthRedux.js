@@ -30,7 +30,10 @@ export const getProfile = createAsyncThunk(
     if (response.data.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response.data
+    let profile = response.data.profile
+    delete profile._id
+    let newData = {...response.data, ...profile}
+    return newData
   }
 )
 

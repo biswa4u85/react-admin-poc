@@ -13,7 +13,7 @@ const FormDetails = () => {
 
     const onFinish = (values) => {
         console.log(values)
-        // let params = { ...values, token, id: singledata._id }
+        // let params = { ...values, token, id: userdata._id }
         // pageActive.current = true;
         // dispatch(upDate(params))
     };
@@ -24,10 +24,10 @@ const FormDetails = () => {
             span: 16,
         },
     };
-    // console.log(userdata)
+    console.log(userdata)
     return (
         <Form name='dynamic_rule'
-        // initialValues={userdata}
+        initialValues={userdata}
          onFinish={onFinish}>
             <Card className='user-card user-card-lg'>
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
@@ -53,7 +53,7 @@ const FormDetails = () => {
                                 <Col xs={24} lg={24} key='collapse-a'>
                                     <Form.Item
                                         {...formItemLayout}
-                                        name='username'
+                                        name='profile.name'
                                         label='Name'
                                         rules={[
                                             {
@@ -81,7 +81,7 @@ const FormDetails = () => {
 
                                     <Form.Item
                                         {...formItemLayout}
-                                        name='stagename'
+                                        name='email'
                                         label='Username / Email'
                                         rules={[
                                             {
