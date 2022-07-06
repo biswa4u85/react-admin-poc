@@ -43,7 +43,7 @@ console.log(manageusers)
 
         {
             title: 'User ID',
-            dataIndex: 'userID',
+            dataIndex: '_id',
             key: 'userID',
             width: 150,
         },
