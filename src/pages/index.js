@@ -8,6 +8,8 @@ import { dashboardConfig } from './dashboard';
 import { errorPagesConfigs } from './errorPages';
 import { profileConfig } from './profile';
 import { celebritieRouteConfigs } from './Celebrities';
+import { manageRouteConfigs } from './ManageBrand';
+import { ManageusersRouteConfigs } from './Manageusers';
 
 const authorizedStructure = {
   fallbackPath: '/signin',
@@ -16,6 +18,8 @@ const authorizedStructure = {
     ...dashboardConfig,
     ...profileConfig,
     ...celebritieRouteConfigs,
+    ...manageRouteConfigs,
+    ...ManageusersRouteConfigs,
   ],
 };
 

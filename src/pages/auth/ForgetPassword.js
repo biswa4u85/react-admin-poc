@@ -41,7 +41,6 @@ const ForgetPassword = () => {
                   <Logo />
                 </div>
               </Col>
-
               <Col xs={24} lg={12}>
                 <div className='user-styled-for-password'>
                   <div className='user-card-header'>

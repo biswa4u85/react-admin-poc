@@ -20,7 +20,7 @@ const FormDetails = () => {
         dispatch(getProfile({ token }))
     }, [])
 
-    console.log(userdata)
+    // console.log(userdata)
 
     return (
         //Biswa - Remove Form, why use key='collapse-a'
@@ -50,16 +50,16 @@ const FormDetails = () => {
                     </Col>
                     <Col xs={24} lg={8} key='collapse-a' style={{ margin: '50px 0' }}>
                         <h5>Name</h5>
-                        <p>john appleseed</p>
+                        <p>{userdata?.profile?.name}</p>
                         <br />
                         <br />
                         <br />
-                        <h5>Username / Email</h5>
+                        <h5>{userdata?.email}</h5>
                         <p>abc@xyz.com</p>
                     </Col>
                     <Col xs={24} lg={8} key='collapse-a' style={{ margin: '50px 0' }}>
                         <h5>User ID</h5>
-                        <p>00001</p>
+                        <p>{userdata?.profile?._id}</p>
                         <br />
                         <br />
                         <br />

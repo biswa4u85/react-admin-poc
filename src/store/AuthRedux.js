@@ -9,6 +9,9 @@ const initialState = {
   user: null,
   token: null,
   userdata: null,
+  manageusers:[],
+  singleres:{},
+  
 }
 
 export const adminLogin = createAsyncThunk(
@@ -30,9 +33,30 @@ export const getProfile = createAsyncThunk(
     if (response.data.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response.data
+    let profile = response.data.profile
+    delete profile._id
+    let newData = {...response.data, ...profile}
+    return newData
   }
 )
+export const getUser = createAsyncThunk(
+  'auth/getUser',
+  async (params, { rejectWithValue }) => {
+    const response = await apiGetCall(`/user/getList`, params)
+    if (response.data.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    // let profile = response.data?.profile
+    // console.log(profile)
+    // delete profile._id
+    // let newData = {...response.data, ...profile}
+    // return newData
+    return response.data
+    
+  }
+)
+
+
 
 
 export const counterSlice = createSlice({
@@ -42,6 +66,9 @@ export const counterSlice = createSlice({
     logout: (state) => {
       state.user = null
       state.token = null
+    },
+    singledata: (state, action) => {
+      state.singleres = action.payload
     },
   },
   extraReducers: {
@@ -76,9 +103,24 @@ export const counterSlice = createSlice({
       state.error = null
       state.userdata = action?.payload
     },
+    // getUser
+    [getUser.pending]: (state) => {
+      state.isFetching = true
+      state.error = null
+    },
+    [getUser.rejected]: (state, action) => {
+      message.error(action?.payload?.message);
+      state.isFetching = false
+      state.error = action?.payload?.message
+    },
+    [getUser.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.manageusers = action?.payload?.data
+    },
   }
 
 })
 
-export const { logout } = counterSlice.actions
+export const { logout,singledata } = counterSlice.actions
 export default counterSlice.reducer

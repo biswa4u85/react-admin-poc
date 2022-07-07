@@ -55,5 +55,64 @@ const sidebarRouteConfig = [
       
     ],
   },
+  {
+    id: 'Manage',
+    title: 'Manage',
+    messageId: 'sidebar.app.celebrities',
+    type: 'group',
+    permittedRole: RoutePermittedRole.superadmin,
+    children: [
+      
+      // {
+      //   id: 'add',
+      //   title: 'Add New',
+      //   messageId: 'sidebar.addnew',
+      //   type: 'item',
+      //   icon: <GrAddCircle />,
+      //   path: '/manage/managelist',
+      // },
+      // {
+      //   id: 'add',
+      //   title: 'Add New',
+      //   messageId: 'sidebar.addnew',
+      //   type: 'item',
+      //   icon: <GrAddCircle />,
+      //   path: '/manage/addnewbrand',
+      // },
+      
+    ],
+  },
+
+  {
+    id: 'Manageusers',
+    title: 'Add New',
+    messageId: 'sidebar.app.addnew',
+    type: 'group',
+    permittedRole: RoutePermittedRole.superadmin,
+    children: [
+      
+      // {
+      //   id: 'add',
+      //   title: 'Add New',
+      //   messageId: 'sidebar.addnew',
+      //   type: 'item',
+      //   icon: <GrAddCircle />,
+      //   path: '/manageusers/users',
+      // },
+      // {
+      //   id: 'add',
+      //   title: 'Add New',
+      //   messageId: 'sidebar.addnew',
+      //   type: 'item',
+      //   icon: <GrAddCircle />,
+      //   path: '/manageusers/viewuser',
+      // },
+      
+      
+    ],
+  },
+
+
+
 ];
 export default sidebarRouteConfig;
