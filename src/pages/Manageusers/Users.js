@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Button, Menu, Table, Row, Col, Input, Space, InputNumber, Upload, Select, Switch, Card } from 'antd';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
+import { DoubleRightOutlined, EditOutlined, DeleteOutlined, } from '@ant-design/icons';
 import { BsSearch } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
-import { getUser} from '../../store/AuthRedux'
+import { getUser,singledata } from '../../store/AuthRedux'
 
 const menu = (
     <Menu>
@@ -14,19 +16,18 @@ const menu = (
 );
 
 const FormDetails = () => {
-
+    let navigate = useNavigate();
     const dispatch = useDispatch()
-  const token = useSelector((state) => state.auth.token)
-  const manageusers = useSelector((state) => state.auth.manageusers)
+    const token = useSelector((state) => state.auth.token)
+    const manageusers = useSelector((state) => state.auth.manageusers)
 
 
-  useEffect(() => {
-    dispatch(getUser({ token }))
-  }, [])
-console.log(manageusers)
-    const onFinish = (values) => {
-        console.log(values)
-    };
+    useEffect(() => {
+        dispatch(getUser({ token }))
+    }, [])
+    // console.log(manageusers)
+
+
     function onChange(value) {
         console.log('changed', value);
     }
@@ -34,8 +35,7 @@ console.log(manageusers)
     const columns = [
         {
             title: 'Name',
-            dataIndex: 'name',
-            dataIndex: 'name',
+            dataIndex: ['profile', 'name'],
             key: 'name',
             width: 150,
             sorter: {},
@@ -43,7 +43,7 @@ console.log(manageusers)
 
         {
             title: 'User ID',
-            dataIndex: '_id',
+            dataIndex: 'userID',
             key: 'userID',
             width: 150,
         },
@@ -55,7 +55,7 @@ console.log(manageusers)
         },
         {
             title: 'Gender',
-            dataIndex: 'profile.gender',
+            dataIndex: ['profile', 'gender'],
             key: 'address 2',
             ellipsis: true,
         },
@@ -67,7 +67,7 @@ console.log(manageusers)
         },
         {
             title: 'Age',
-            dataIndex: 'address',
+            dataIndex: ['profile', 'age'],
             key: 'address 4',
             ellipsis: true,
         },
@@ -76,6 +76,7 @@ console.log(manageusers)
             dataIndex: 'online',
             key: 'address 4',
             ellipsis: true,
+            render: (res) => (<div>{res?'Active':'Inactive'}</div>)
         },
         {
             title: 'Date Registered',
@@ -83,13 +84,51 @@ console.log(manageusers)
             key: 'address 4',
             ellipsis: true,
         },
+        {
+            title: 'Action',
+            key: 'action',
+            render: (text, record) => (
+               
+              <Space size='middle'>
+                <DoubleRightOutlined style={{ color: '#52c41a' }} 
+                onClick = {() => {
+                    dispatch(singledata(record))
+                    navigate(`/manageusers/viewuser`)
+                }
+                }
+                />
+                <EditOutlined style={{ color: 'blue' }} />
+                <DeleteOutlined style={{ color: 'orange' }} />
+        
+              </Space>
+            ),
+          },
+        // {
+        //     title: 'Action',
+        //     key: 'action',
+        //     render: (_, record) => (
+        //       <Space size="middle">
+        //         <button onClick={() => {
+        //           dispatch(singleid(record))
+        //           navigate(`/edit`)
+        //         }}>Edit List</button>
+      
+        //         <button onClick={() => {
+        //             deletitem(record)
+        //     }
+                    
+        //         }
+        //             >Delete</button>
+        //       </Space>
+        //     ),
+        //   },
     ];
 
     return (
         <>
             <Card className='user-card user-card-lg'>
                 <h5>Manage Users</h5>
-                <hr style={{margin:"30px 0"}} />
+                <hr style={{ margin: "30px 0" }} />
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
                     <Col xs={12} lg={12} key='collapse-a'>
                         <Button type='primary' htmlType='submit'>
