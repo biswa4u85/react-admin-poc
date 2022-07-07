@@ -50,7 +50,8 @@ const FormDetails = () => {
                     />
                 </Space>
                     <Row gutter={{ xs: 20, sm: 16, md: 32 }} >
-                        <Col xs={24} lg={12} key='collapse-a' style={{ margin: '50px 0' }}>
+                    <Col xs={24} lg={4} key='collapse-a' style={{ margin: '50px 0' }}></Col>
+                        <Col xs={24} lg={11} key='collapse-a' style={{ margin: '50px 0' }}>
                             <div style={{ marginBottom: "50px", }}>
                                 <h5>Name</h5>
                                 <p>{singleres.profile?.name}</p>
@@ -80,7 +81,7 @@ const FormDetails = () => {
                                 <p>Airtel</p>
                             </div>
                         </Col>
-                        <Col xs={24} lg={12} key='collapse-a' style={{ margin: '50px 0' }}>
+                        <Col xs={24} lg={9} key='collapse-a' style={{ margin: '50px 0' }}>
                             <div style={{ marginBottom: "50px", }}>
                                 <h5>User ID</h5>
                                 <p>{singleres.userID}</p>
