@@ -11,7 +11,7 @@ const FormDetails = () => {
     let navigate = useNavigate();
     const dispatch = useDispatch()
     const token = useSelector((state) => state.auth.token)
-    const userdata = useSelector((state) => state.auth.userdata)
+    const singleres = useSelector((state) => state.auth.singleres)
 
     const onFinish = (values) => {
         console.log(values)
@@ -20,7 +20,7 @@ const FormDetails = () => {
         dispatch(getProfile({ token }))
     }, [])
 
-    console.log(userdata)
+    console.log(singleres)
     const tailLayout = {
         wrapperCol: {
             offset:8,
@@ -53,7 +53,7 @@ const FormDetails = () => {
                         <Col xs={24} lg={12} key='collapse-a' style={{ margin: '50px 0' }}>
                             <div style={{ marginBottom: "50px", }}>
                                 <h5>Name</h5>
-                                <p>john appleseed</p>
+                                <p>{singleres.profile?.name}</p>
                             </div>
                             <div style={{ marginBottom: "50px", }}>
                                 <h5>Phone Number</h5>
@@ -61,7 +61,7 @@ const FormDetails = () => {
                             </div>
                             <div style={{ marginBottom: "50px", }}>
                                 <h5>Age</h5>
-                                <p>21</p>
+                                <p>{singleres.profile?.age}</p>
                             </div>
                             <div style={{ marginBottom: "50px", }}>
                                 <h5>Interests</h5>
@@ -83,15 +83,15 @@ const FormDetails = () => {
                         <Col xs={24} lg={12} key='collapse-a' style={{ margin: '50px 0' }}>
                             <div style={{ marginBottom: "50px", }}>
                                 <h5>User ID</h5>
-                                <p>10211</p>
+                                <p>{singleres.userID}</p>
                             </div>
                             <div style={{ marginBottom: "50px", }}>
                                 <h5>Gender</h5>
-                                <p>Male</p>
+                                <p>{singleres.profile?.gender}</p>
                             </div>
                             <div style={{ marginBottom: "50px", }}>
                                 <h5>Status</h5>
-                                <p>Omline</p>
+                                <p>{(singleres.online) ? 'Active' : 'Inactive'}</p>
                             </div>
                             <div style={{ marginBottom: "50px", }}>
                                 <h5>Following</h5>

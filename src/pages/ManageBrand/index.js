@@ -6,12 +6,12 @@ const Addnewbrand = React.lazy(() => import('./Addnewbrand'));
 
 export const manageRouteConfigs = [
   {
-    path: '/manage/managelist',
+    path: '/ManageBrand/managelist',
     element: <ManageList />,
   },
   
   {
-    path: '/manage/addnewbrand',
+    path: '/ManageBrand/addnewbrand',
     element: <Addnewbrand />,
   },
   

@@ -3,6 +3,11 @@ import { Button, Menu, Table, Row, Col, Input, Space, InputNumber, Upload, Selec
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { BsSearch } from "react-icons/bs";
+import { DoubleRightOutlined, EditOutlined, DeleteOutlined, } from '@ant-design/icons';
+import { getbrand,singledata } from '../../store/BrandRedux'
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+
 
 const menu = (
     <Menu>
@@ -12,12 +17,19 @@ const menu = (
 );
 
 const FormDetails = () => {
+    let navigate = useNavigate();
+    const dispatch = useDispatch()
+    const token = useSelector((state) => state.auth.token)
+    const brandlist = useSelector((state) => state.brand.brandlist)
+    
+    useEffect(() => {
+        dispatch(getbrand({ token }))
+    }, [])
 
-    const onFinish = (values) => {
-        console.log(values)
-    };
+    console.log(brandlist)
+
     function onChange(value) {
-        console.log('changed', value);
+        // console.log('changed', value);
     }
 
     const columns = [
@@ -32,7 +44,7 @@ const FormDetails = () => {
 
         {
             title: 'Description',
-            dataIndex: 'age',
+            dataIndex: 'description',
             key: 'age',
             width: 150,
         },
@@ -60,44 +72,25 @@ const FormDetails = () => {
             key: 'address 4',
             ellipsis: true,
         },
-    ];
-
-    const data = [
         {
-            key: '1',
-            name: 'Nike',
-            address: 'New York No. 1 Lake Park, New York No. 1 Lake Park',
-            age: "3,496",
-            tags: ['virat kohli William Smith,john'],
-        },
-        {
-            key: '2',
-            name: 'Adidas',
-            age: "3,496",
-            address: 'New York No. 1 Lake Park, New York No. 1 Lake Park',
-            tags: ['virat kohli William Smith,john'],
-        },
-        {
-            key: '3',
-            name: 'Puma',
-            age: "3,496",
-            address: 'New York No. 1 Lake Park, New York No. 1 Lake Park',
-            tags: ['virat kohli William Smith,john'],
-        },
-        {
-            key: '4',
-            name: 'Nike',
-            age: "3,496",
-            address: 'New York No. 1 Lake Park, New York No. 1 Lake Park',
-            tags: ['virat kohli William Smith,john'],
-        },
-        {
-            key: '5',
-            name: 'Nike',
-            age: "3,496",
-            address: 'New York No. 1 Lake Park, New York No. 1 Lake Park',
-            tags: ['virat kohli William Smith,john'],
-        },
+            title: 'Action',
+               key: 'action',
+               render: (text, record) => (
+                  
+              <Space size='middle'>
+                   <DoubleRightOutlined style={{ color: '#52c41a' }} 
+                onClick = {() => {
+                    dispatch(singledata(record))
+                       navigate(`/ManageBrand/addnewbrand`)
+                }
+               }
+                />
+                <EditOutlined style={{ color: 'blue' }} />
+                <DeleteOutlined style={{ color: 'orange' }} />
+           
+                 </Space>
+            ),
+             },
     ];
 
     return (
@@ -125,7 +118,7 @@ const FormDetails = () => {
                         </Space>
                     </Col>
                 </Row>
-                <Table columns={columns} dataSource={data} />;
+                <Table columns={columns} dataSource={brandlist} />;
             </Card>
         </>
     );

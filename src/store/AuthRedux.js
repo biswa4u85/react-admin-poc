@@ -10,6 +10,7 @@ const initialState = {
   token: null,
   userdata: null,
   manageusers:[],
+  singleres:{},
   
 }
 
@@ -66,6 +67,9 @@ export const counterSlice = createSlice({
       state.user = null
       state.token = null
     },
+    singledata: (state, action) => {
+      state.singleres = action.payload
+    },
   },
   extraReducers: {
     // adminLogin
@@ -118,5 +122,5 @@ export const counterSlice = createSlice({
 
 })
 
-export const { logout } = counterSlice.actions
+export const { logout,singledata } = counterSlice.actions
 export default counterSlice.reducer
