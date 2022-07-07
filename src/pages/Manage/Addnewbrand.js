@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Button, Breadcrumb, Form, Row, Col, Input, Space, Image, TextArea, Switch, Card } from 'antd';
+import { Button, Breadcrumb, Form, Row, Col, Input, Space, Image, Modal, Switch, Card } from 'antd';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { UploadOutlined, } from '@ant-design/icons';
@@ -9,8 +9,9 @@ const FormDetails = () => {
     const dispatch = useDispatch()
     const token = useSelector((state) => state.auth.token)
     const userdata = useSelector((state) => state.auth.userdata)
-    const pageActive = useRef(false);
 
+    const pageActive = useRef(false);
+    const [loading, setLoading] = useState(false)
     const { TextArea } = Input;
 
     const onFinish = (values) => {
@@ -26,10 +27,8 @@ const FormDetails = () => {
             span: 16,
         },
     };
-    // console.log(userdata)
     return (
         <Form name='dynamic_rule'
-            // initialValues={userdata}
             onFinish={onFinish}>
             <Card className='user-card user-card-lg'>
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
@@ -41,7 +40,6 @@ const FormDetails = () => {
                             </Breadcrumb>
                         </Space>
                     </Col>
-
                     <Col xs={24} lg={24} key='collapse-a' style={{ margin: '50px 0' }}>
                         <Card className='user-card user-card-lg'>
                             <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
@@ -74,10 +72,23 @@ const FormDetails = () => {
                                         <br />
                                         <br />
                                         <h5><a href='#' style={{ textDecoration: "underline", }}> Add New Influencers</a></h5>
+                                        <Space>
+                                            <Button type='primary' onClick={() => setLoading(true)}>
+                                                Open
+                                            </Button>
+                                            <Modal
+                                                title='Basic Modal'
+                                                visible={true}
+                                                // visible= 'true'
+                                                onOk={() => setLoading(false)}
+                                                onCancel={() => setLoading(false)}>
+                                                <p>Some contents...</p>
+                                                <p>Some contents...</p>
+                                                <p>Some contents...</p>
+                                            </Modal>
 
+                                        </Space>
                                     </Form.Item>
-
-
                                     <Form.Item {...formTailLayout}
                                         name='profile'
                                         label="Upload Cover GIf Image"
@@ -103,8 +114,6 @@ const FormDetails = () => {
                                         </div>
 
                                     </Form.Item>
-
-
                                     <Form.Item
                                         {...formItemLayout}
                                         name='managername'
@@ -138,7 +147,6 @@ const FormDetails = () => {
         </Form >
     );
 };
-
 const formItemLayout = {
     labelCol: {
         span: 8,
@@ -147,7 +155,6 @@ const formItemLayout = {
         span: 12,
     },
 };
-
 const formTailLayout = {
     labelCol: {
         span: 8,
@@ -157,8 +164,6 @@ const formTailLayout = {
         offset: 0,
     },
 };
-
-
 const Addnewbrand = () => {
     return (
         <div className='user-pages'>

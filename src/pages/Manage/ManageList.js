@@ -65,6 +65,7 @@ const FormDetails = () => {
     const data = [
         {
             key: '1',
+            
             name: 'Nike',
             address: 'New York No. 1 Lake Park, New York No. 1 Lake Park',
             age: "3,496",
