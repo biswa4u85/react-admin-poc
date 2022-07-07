@@ -3,7 +3,7 @@ import {message} from 'antd';
 
 import {AppLoader} from '../../../@crema';
 import {useDispatch, useSelector} from 'react-redux';
-import {hideMessage} from '../../../redux/actions';
+// import {hideMessage} from '../../../redux/actions';
 
 const AppInfoView = () => {
   const {loading, error, displayMessage} = useSelector(({common}) => common);
@@ -12,14 +12,14 @@ const AppInfoView = () => {
   useEffect(() => {
     if (error) {
       message.error(error);
-      dispatch(hideMessage());
+      // dispatch(hideMessage());
     }
   }, [error]);
 
   useEffect(() => {
     if (displayMessage) {
       message.success(displayMessage);
-      dispatch(hideMessage());
+      // dispatch(hideMessage());
     }
   }, [displayMessage]);
 
