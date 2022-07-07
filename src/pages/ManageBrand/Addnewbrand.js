@@ -69,10 +69,10 @@ const FormDetails = () => {
                                                 message: 'Please enter your Email',
                                             },
                                         ]}>
-                                       <Input placeholder='Select Influencers ited up with' />
-                                       <br/>
-                                       <br/>
-                                       <a onClick={() => setLoading(true)} style={{ textDecoration: "underline", }}> Add New Influencers</a>
+                                        <Input placeholder='Select Influencers ited up with' />
+                                        <br />
+                                        <br />
+                                        <a onClick={() => setLoading(true)} style={{ textDecoration: "underline", }}> Add New Influencers</a>
                                     </Form.Item>
                                     <Form.Item {...formTailLayout}
                                         name='profile'
@@ -130,15 +130,14 @@ const FormDetails = () => {
                 </Row>
             </Card>
         </Form >
-        <Modal 
-          
+        <Modal
+            width={900}
             title='Add New Influencers'
             visible={loading}
-
             onOk={() => setLoading(false)}
             onCancel={() => setLoading(false)}
 
-            >
+        >
             <NewInfluencers />
         </Modal>
     </>

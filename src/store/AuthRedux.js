@@ -46,13 +46,7 @@ export const getUser = createAsyncThunk(
     if (response.data.status === 'error') {
       return rejectWithValue(response.data)
     }
-    // let profile = response.data?.profile
-    // console.log(profile)
-    // delete profile._id
-    // let newData = {...response.data, ...profile}
-    // return newData
     return response.data
-    
   }
 )
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Button, Breadcrumb, Form, Row, Col, Input, Space, Upload, Select, Switch, Card } from 'antd';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
@@ -27,8 +27,8 @@ const FormDetails = () => {
     console.log(userdata)
     return (
         <Form name='dynamic_rule'
-        initialValues={userdata}
-         onFinish={onFinish}>
+            initialValues={userdata}
+            onFinish={onFinish}>
             <Card className='user-card user-card-lg'>
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
                     <Col xs={24} lg={24} key='collapse-a' style={{ borderBottom: "1px solid #ccc ", paddingBottom: "10px" }}>
@@ -41,19 +41,15 @@ const FormDetails = () => {
                     </Col>
 
                     <Col xs={24} lg={24} key='collapse-a' style={{ margin: '50px 0' }}>
-
-
-
-
                         <Card className='user-card user-card-lg'>
                             <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
                                 <Col xs={24} lg={24} key='collapse-a'>
-                                
+
                                 </Col>
                                 <Col xs={24} lg={24} key='collapse-a'>
                                     <Form.Item
                                         {...formItemLayout}
-                                        name='profile.name'
+                                        name='name'
                                         label='Name'
                                         rules={[
                                             {
@@ -93,24 +89,24 @@ const FormDetails = () => {
                                     </Form.Item>
                                     <Form.Item
                                         {...formItemLayout}
-                                        name='managername'
+                                        name='phone'
                                         label='Phone Number'
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please enter Manager Name',
+                                                message: 'Please enter Phone',
                                             },
                                         ]}>
-                                        <Input placeholder='Please enter Manager Name' />
+                                        <Input placeholder='Please enter Phone' />
                                     </Form.Item>
 
                                     <Form.Item
                                         {...formItemLayout}
-                                        name='stagename'
+                                        name='password'
                                         label='New Password'
                                         rules={[
                                             {
-                                                required: true,
+                                                // required: true,
                                                 message: 'Please enter your Password',
                                             },
                                         ]}>
@@ -119,11 +115,11 @@ const FormDetails = () => {
 
                                     <Form.Item
                                         {...formItemLayout}
-                                        name='stagename'
+                                        name='cpassword'
                                         label='Re-Enter Password'
                                         rules={[
                                             {
-                                                required: true,
+                                                // required: true,
                                                 message: 'Please enter your Re-Enter Password',
                                             },
                                         ]}>
