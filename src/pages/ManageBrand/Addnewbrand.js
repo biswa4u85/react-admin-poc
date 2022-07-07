@@ -4,6 +4,7 @@ import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { UploadOutlined, } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux'
+import NewInfluencers from './NewInfluencers'
 
 const FormDetails = () => {
     const dispatch = useDispatch()
@@ -27,7 +28,7 @@ const FormDetails = () => {
             span: 16,
         },
     };
-    return (
+    return (<>
         <Form name='dynamic_rule'
             onFinish={onFinish}>
             <Card className='user-card user-card-lg'>
@@ -44,7 +45,7 @@ const FormDetails = () => {
                         <Card className='user-card user-card-lg'>
                             <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
                                 <Col xs={24} lg={24} key='collapse-a'></Col>
-                                <Col xs={24} lg={24} key='collapse-a'>
+                                <Col xs={24} lg={20} key='collapse-a'>
                                     <Form.Item
                                         {...formItemLayout}
                                         name='username'
@@ -68,26 +69,10 @@ const FormDetails = () => {
                                                 message: 'Please enter your Email',
                                             },
                                         ]}>
-                                        <Input placeholder='Select Influencers ited up with' />
-                                        <br />
-                                        <br />
-                                        <h5><a href='#' style={{ textDecoration: "underline", }}> Add New Influencers</a></h5>
-                                        <Space>
-                                            <Button type='primary' onClick={() => setLoading(true)}>
-                                                Open
-                                            </Button>
-                                            <Modal
-                                                title='Basic Modal'
-                                                visible={true}
-                                                // visible= 'true'
-                                                onOk={() => setLoading(false)}
-                                                onCancel={() => setLoading(false)}>
-                                                <p>Some contents...</p>
-                                                <p>Some contents...</p>
-                                                <p>Some contents...</p>
-                                            </Modal>
-
-                                        </Space>
+                                       <Input placeholder='Select Influencers ited up with' />
+                                       <br/>
+                                       <br/>
+                                       <a onClick={() => setLoading(true)} style={{ textDecoration: "underline", }}> Add New Influencers</a>
                                     </Form.Item>
                                     <Form.Item {...formTailLayout}
                                         name='profile'
@@ -145,6 +130,18 @@ const FormDetails = () => {
                 </Row>
             </Card>
         </Form >
+        <Modal 
+          
+            title='Add New Influencers'
+            visible={loading}
+
+            onOk={() => setLoading(false)}
+            onCancel={() => setLoading(false)}
+
+            >
+            <NewInfluencers />
+        </Modal>
+    </>
     );
 };
 const formItemLayout = {
