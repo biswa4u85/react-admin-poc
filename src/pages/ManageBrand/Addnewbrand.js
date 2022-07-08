@@ -6,7 +6,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { useSelector, useDispatch } from 'react-redux'
 import ReactPlayer from 'react-player';
 import NewInfluencers from './NewInfluencers'
-import { brands,} from '../../store/BrandRedux'
+import { addbrand,} from '../../store/BrandRedux'
 
 
 
@@ -22,7 +22,7 @@ const FormDetails = () => {
     const onFinish = (values) => {
         console.log(values)
         // let params = {...values ,token ,coverImage:'some image'}
-        // dispatch(brands(params))
+        // dispatch(addbrand(params))
     };
 
     const tailLayout = {
@@ -31,16 +31,7 @@ const FormDetails = () => {
             span: 16,
         },
     };
-    
-    // state = {
-    //     value: 1,
-    //   };
-    //   onChange = (e) => {
-    //     console.log('radio checked', e.target.value);
-    //     this.setState({
-    //       value: e.target.value,
-    //     });
-    // }
+
     return (<>
         <Form name='dynamic_rule'
             onFinish={onFinish}
@@ -81,7 +72,7 @@ const FormDetails = () => {
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please enter your Email',
+                                                message: 'Please enter your Influencers',
                                             },
                                         ]}>
 
