@@ -168,7 +168,7 @@ const FormDetails = () => {
                                             url='https://www.facebook.com/facebook/videos/10153231379946729/'
                                         />
 
-                                        <span style={{ fontSize: "50px", position: "absolute", right: "40px", top: "55px" }}><IoIosAddCircle /></span>
+                                        <span style={{ fontSize: "50px", position: "absolute", right: "40px", top: "55px",color:"#0A8FDC" }}><IoIosAddCircle /></span>
                                     </Form.Item>
                                     <Form.Item {...tailLayout} >
                                         <Space size='large' style={{ marginTop: "50px" }}>
@@ -194,9 +194,6 @@ const FormDetails = () => {
             onFinish={onFinish}>
             <Card className='user-card user-card-lg'>
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
-
-
-
                     <Col xs={24} lg={24} key='collapse-a' style={{ margin: '50px 0' }}>
                         <Card className='user-card user-card-lg'>
                             <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
@@ -267,9 +264,6 @@ const FormDetails = () => {
                                         </RadioGroup>
                                     </Space>
                                     </Form.Item>
-
-
-
                                     <Form.Item
                                         {...formItemLayout}
                                         name='username'
@@ -302,12 +296,11 @@ const FormDetails = () => {
                                                 Back
                                             </Button>
                                             <Button htmlType='submit'>
-                                                Next
+                                                Finish
                                             </Button>
                                             <a style={{ textDecoration: "underline" }} href='#'>Cancel</a>
                                         </Space>
                                     </Form.Item>
-
                                 </Col>
                             </Row>
                         </Card>
@@ -315,8 +308,6 @@ const FormDetails = () => {
                 </Row>
             </Card>
         </Form >
-
-
         <Modal
             width={900}
             title='Add New Influencers'
