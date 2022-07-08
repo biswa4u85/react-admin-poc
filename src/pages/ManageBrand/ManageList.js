@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Menu, Table, Row, Col, Input, Space, InputNumber, Upload, Select, Switch, Card } from 'antd';
+import { Button, Menu, Table, Row, Col, Input, Space, InputNumber, Form, Select, Switch, Card } from 'antd';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
-import { BsSearch } from "react-icons/bs";
+import { IoMdAdd } from 'react-icons/io';
 import { DoubleRightOutlined, EditOutlined, DeleteOutlined, } from '@ant-design/icons';
-import { getbrand,singledata } from '../../store/BrandRedux'
+import { getbrand, singledata } from '../../store/BrandRedux'
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -17,15 +17,18 @@ const menu = (
 );
 
 const FormDetails = () => {
+    const [form] = Form.useForm();
     let navigate = useNavigate();
     const dispatch = useDispatch()
     const token = useSelector((state) => state.auth.token)
     const brandlist = useSelector((state) => state.brand.brandlist)
-    
+
     useEffect(() => {
         dispatch(getbrand({ token }))
     }, [])
-
+    const handlePageChange = (page, size, searchVal = null) => {
+        console.log('Received values of form: ', page);
+    }
     console.log(brandlist)
 
     function onChange(value) {
@@ -74,30 +77,85 @@ const FormDetails = () => {
         },
         {
             title: 'Action',
-               key: 'action',
-               render: (text, record) => (
-                  
-              <Space size='middle'>
-                   <DoubleRightOutlined style={{ color: '#52c41a' }} 
-                onClick = {() => {
-                    dispatch(singledata(record))
-                       navigate(`/ManageBrand/addnewbrand`)
-                }
-               }
-                />
-                <EditOutlined style={{ color: 'blue' }} />
-                <DeleteOutlined style={{ color: 'orange' }} />
-           
-                 </Space>
+            key: 'action',
+            render: (text, record) => (
+
+                <Space size='middle'>
+                    <DoubleRightOutlined style={{ color: '#52c41a' }}
+                        onClick={() => {
+                            dispatch(singledata(record))
+                            navigate(`/ManageBrand/addnewbrand`)
+                        }
+                        }
+                    />
+                    <EditOutlined style={{ color: 'blue' }} />
+                    <DeleteOutlined style={{ color: 'orange' }} />
+
+                </Space>
             ),
-             },
+        },
     ];
 
     return (
         <>
             <Card className='user-card user-card-lg'>
+                <Space direction='vertical' style={{ width: '100%' }}>
+                    <Form
+                        form={form}
+                        name='search'
+                        className='ant-advanced-search-form'
+                        onFinish={handlePageChange}>
+                        <Row gutter={24}>
+                            <Col span={12}>
+                                <Form.Item
+                                    name='username'
+                                    label='Name'
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please input your name',
+                                        },
+                                    ]}>
+                                    <Input placeholder='Please input your name' />
+                                </Form.Item>
+                            </Col>
+                            <Col span={12}>
+                                <Form.Item
+                                    name='username'
+                                    label='Name'
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please input your name',
+                                        },
+                                    ]}>
+                                    <Input placeholder='Please input your name' />
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col span={24} >
+                                <Button style={{ float: 'left' }} type='primary'><IoMdAdd /> Add Product</Button>
+                                <div style={{ textAlign: 'right' }}>
+                                    <Button type='primary' htmlType='submit'>
+                                        Search
+                                    </Button>
+                                    <Button
+                                        style={{ margin: '0 8px' }}
+                                        onClick={() => {
+                                            form.resetFields();
+                                        }}>
+                                        Clear
+                                    </Button>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Form>
+                </Space>
+                <br/>
+                <br/>
                 <h5>Manage Brand</h5>
-                <hr style={{margin:"30px 0"}} />
+                <hr style={{ margin: "10px 0" }} />
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
                     <Col xs={12} lg={12} key='collapse-a'>
                         <Button type='primary' htmlType='submit'>
@@ -105,17 +163,9 @@ const FormDetails = () => {
                         </Button>
                     </Col>
                     <Col xs={12} lg={12} key='collapse-a' style={{ textAlign: "right" }}>
-                        <Space>
-                            Sort by
-                            <Space>
-                                <InputNumber placeholder='All' min={0} max={10} step={0.1} onChange={onChange}
-                                    style={{
-                                        width: 200,
-                                    }} />
-                            </Space>
-
-                            <BsSearch style={{ margin: "0 10px", fontSize: "20px", cursor: "pointer" }} />
-                        </Space>
+                        <Button type='primary' htmlType='submit'>
+                            Search
+                        </Button>
                     </Col>
                 </Row>
                 <Table columns={columns} dataSource={brandlist} />;
