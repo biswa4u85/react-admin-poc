@@ -6,7 +6,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { useSelector, useDispatch } from 'react-redux'
 import ReactPlayer from 'react-player';
 import NewInfluencers from './NewInfluencers'
-import { brands, } from '../../store/BrandRedux'
+import { addbrand,} from '../../store/BrandRedux'
 
 
 
@@ -21,8 +21,8 @@ const FormDetails = () => {
 
     const onFinish = (values) => {
         console.log(values)
-        // let params = {...values ,token }
-        // dispatch(brands(params))
+        // let params = {...values ,token ,coverImage:'some image'}
+        // dispatch(addbrand(params))
     };
 
     const tailLayout = {
@@ -32,15 +32,6 @@ const FormDetails = () => {
         },
     };
 
-    // state = {
-    //     value: 1,
-    //   };
-    //   onChange = (e) => {
-    //     console.log('radio checked', e.target.value);
-    //     this.setState({
-    //       value: e.target.value,
-    //     });
-    // }
     return (<>
         <Form name='dynamic_rule'
             onFinish={onFinish}
@@ -81,7 +72,7 @@ const FormDetails = () => {
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please enter your Email',
+                                                message: 'Please enter your Influencers',
                                             },
                                         ]}>
                                         <Input placeholder='Select Influencers ited up with' />
@@ -125,7 +116,7 @@ const FormDetails = () => {
                                     <Form.Item {...tailLayout}>
                                         <Space size='large' >
                                             <Button type='primary' htmlType='submit'>
-                                                Back
+                                                Submit
                                             </Button>
                                             <Button htmlType='submit'>
                                                 Next

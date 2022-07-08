@@ -384,6 +384,8 @@
   "sidebar.application": "Application",
   "sidebar.app.dashboard": "Dashboards",
   "sidebar.app.celebrities": "Celebrities",
+  "sidebar.app.manageusers": "Manage Users",
+  "sidebar.app.managebrand": "Manage Brands",
   "sidebar.promo": "Promo",
   "sidebar.app.promo": "promo",
   "sidebar.app.promo.list": "List",

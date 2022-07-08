@@ -52,25 +52,25 @@ const sidebarRouteConfig = [
         icon: <GrAddCircle />,
         path: '/celebrities/addform',
       },
-      
+
     ],
   },
   {
     id: 'Manage',
     title: 'Manage',
-    messageId: 'sidebar.app.celebrities',
+    messageId: 'sidebar.app.managebrand',
     type: 'group',
     permittedRole: RoutePermittedRole.superadmin,
     children: [
-      
-      // {
-      //   id: 'add',
-      //   title: 'Add New',
-      //   messageId: 'sidebar.addnew',
-      //   type: 'item',
-      //   icon: <GrAddCircle />,
-      //   path: '/manage/managelist',
-      // },
+
+      {
+        id: 'add',
+        title: 'Add New',
+        messageId: 'sidebar.listitem',
+        type: 'item',
+        icon: <BsList />,
+        path: '/ManageBrand/managelist',
+      },
       // {
       //   id: 'add',
       //   title: 'Add New',
@@ -79,26 +79,26 @@ const sidebarRouteConfig = [
       //   icon: <GrAddCircle />,
       //   path: '/manage/addnewbrand',
       // },
-      
+
     ],
   },
 
   {
     id: 'Manageusers',
     title: 'Add New',
-    messageId: 'sidebar.app.addnew',
+    messageId: 'sidebar.app.manageusers',
     type: 'group',
     permittedRole: RoutePermittedRole.superadmin,
     children: [
-      
-      // {
-      //   id: 'add',
-      //   title: 'Add New',
-      //   messageId: 'sidebar.addnew',
-      //   type: 'item',
-      //   icon: <GrAddCircle />,
-      //   path: '/manageusers/users',
-      // },
+
+      {
+        id: 'add',
+        title: 'Add New',
+        messageId: 'sidebar.listitem',
+        type: 'item',
+        icon: <BsList />,
+        path: '/manageusers/users',
+      },
       // {
       //   id: 'add',
       //   title: 'Add New',
@@ -107,8 +107,8 @@ const sidebarRouteConfig = [
       //   icon: <GrAddCircle />,
       //   path: '/manageusers/viewuser',
       // },
-      
-      
+
+
     ],
   },
 

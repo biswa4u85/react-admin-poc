@@ -7,6 +7,7 @@ const initialState = {
     isFetching: false,
     error: null,
     brandlist: [],
+    // addbrand:true,
 
 }
 export const addbrand = createAsyncThunk(
@@ -55,6 +56,21 @@ export const counterSlice = createSlice({
         },
     },
     extraReducers: {
+         // addbrand
+         [addbrand.pending]: (state) => {
+            state.isFetching = true
+            state.error = null
+        },
+        [addbrand.rejected]: (state, action) => {
+            message.error(action?.payload?.message);
+            state.isFetching = false
+            state.error = action?.payload?.message
+        },
+        [addbrand.fulfilled]: (state, action) => {
+            state.isFetching = false
+            state.error = null
+            state.adddata = action?.payload
+        },
         // getbrand
         [getbrand.pending]: (state) => {
             state.isFetching = true
