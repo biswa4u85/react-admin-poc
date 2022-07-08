@@ -4,7 +4,7 @@ import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { IoMdAdd } from 'react-icons/io';
 import { DoubleRightOutlined, EditOutlined, DeleteOutlined, } from '@ant-design/icons';
-import { getbrand, singledata } from '../../store/BrandRedux'
+import { getbrand,singledata,deletData } from '../../store/BrandRedux'
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -26,6 +26,11 @@ const FormDetails = () => {
     useEffect(() => {
         dispatch(getbrand({ token }))
     }, [])
+    const deletitem = (item) => {
+        dispatch(deletData({ token, id: item._id }))
+        // console.log(item)
+      }
+
     const handlePageChange = (page, size, searchVal = null) => {
         console.log('Received values of form: ', page);
     }
@@ -77,21 +82,23 @@ const FormDetails = () => {
         },
         {
             title: 'Action',
-            key: 'action',
-            render: (text, record) => (
-
-                <Space size='middle'>
-                    <DoubleRightOutlined style={{ color: '#52c41a' }}
-                        onClick={() => {
-                            dispatch(singledata(record))
-                            navigate(`/ManageBrand/addnewbrand`)
-                        }
-                        }
-                    />
-                    <EditOutlined style={{ color: 'blue' }} />
-                    <DeleteOutlined style={{ color: 'orange' }} />
-
-                </Space>
+               key: 'action',
+               render: (text, record) => (
+                  
+              <Space size='middle'>
+                   <DoubleRightOutlined style={{ color: '#52c41a' }} 
+                onClick = {() => {
+                    dispatch(singledata(record))
+                       navigate(`/ManageBrand/addnewbrand`)
+                }
+               }
+                />
+                <EditOutlined style={{ color: 'blue' }} />
+                <DeleteOutlined
+                onClick={() => deletitem(record)}
+                style={{ color: 'orange' }} />
+           
+                 </Space>
             ),
         },
     ];
