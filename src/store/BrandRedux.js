@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiPostCall, apiGetCall } from '../utility/site-apis'
+import { apiPostCall, apiGetCall,apiDeleteCall } from '../utility/site-apis'
 import { message } from 'antd';
 
 const initialState = {
@@ -21,7 +21,18 @@ export const getbrand = createAsyncThunk(
     }
 )
 
-
+export const deletData = createAsyncThunk(
+    'brand/deletData',
+    async (params, { rejectWithValue }) => {
+        // debugger
+      const response = await apiDeleteCall(`/brands/${params.id}`, params)
+    //   console.log(response)
+      if (response.data.status === 'error') {
+        return rejectWithValue(response.data)
+      }
+      return response.data
+    }
+  )
 
 
 

@@ -4,7 +4,7 @@ import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { BsSearch } from "react-icons/bs";
 import { DoubleRightOutlined, EditOutlined, DeleteOutlined, } from '@ant-design/icons';
-import { getbrand,singledata } from '../../store/BrandRedux'
+import { getbrand,singledata,deletData } from '../../store/BrandRedux'
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -25,6 +25,10 @@ const FormDetails = () => {
     useEffect(() => {
         dispatch(getbrand({ token }))
     }, [])
+    const deletitem = (item) => {
+        dispatch(deletData({ token, id: item._id }))
+        // console.log(item)
+      }
 
     console.log(brandlist)
 
@@ -86,7 +90,9 @@ const FormDetails = () => {
                }
                 />
                 <EditOutlined style={{ color: 'blue' }} />
-                <DeleteOutlined style={{ color: 'orange' }} />
+                <DeleteOutlined
+                onClick={() => deletitem(record)}
+                style={{ color: 'orange' }} />
            
                  </Space>
             ),

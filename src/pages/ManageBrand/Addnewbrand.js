@@ -11,6 +11,7 @@ const FormDetails = () => {
     const token = useSelector((state) => state.auth.token)
     const userdata = useSelector((state) => state.auth.userdata)
 
+
     const pageActive = useRef(false);
     const [loading, setLoading] = useState(false)
     const { TextArea } = Input;
@@ -28,9 +29,11 @@ const FormDetails = () => {
             span: 16,
         },
     };
+
     return (<>
         <Form name='dynamic_rule'
-            onFinish={onFinish}>
+            onFinish={onFinish}
+            >
             <Card className='user-card user-card-lg'>
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
                     <Col xs={24} lg={24} key='collapse-a' style={{ borderBottom: "1px solid #ccc ", paddingBottom: "10px" }}>
@@ -48,7 +51,7 @@ const FormDetails = () => {
                                 <Col xs={24} lg={20} key='collapse-a'>
                                     <Form.Item
                                         {...formItemLayout}
-                                        name='username'
+                                        name='name'
                                         label='Brand Name'
                                         rules={[
                                             {
@@ -101,7 +104,7 @@ const FormDetails = () => {
                                     </Form.Item>
                                     <Form.Item
                                         {...formItemLayout}
-                                        name='managername'
+                                        name='description'
                                         label='Brand Description'
                                         rules={[
                                             {
