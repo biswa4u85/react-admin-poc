@@ -105,8 +105,11 @@ const FormDetails = () => {
 
     return (
         <>
+         <h3>Manage Brand</h3>
             <Card className='user-card user-card-lg'>
+               
                 <Space direction='vertical' style={{ width: '100%' }}>
+                
                     <Form
                         form={form}
                         name='search'
@@ -161,21 +164,8 @@ const FormDetails = () => {
                 </Space>
                 <br/>
                 <br/>
-                <h5>Manage Brand</h5>
-                <hr style={{ margin: "10px 0" }} />
-                <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
-                    <Col xs={12} lg={12} key='collapse-a'>
-                        <Button type='primary' htmlType='submit'>
-                            Add New Brand
-                        </Button>
-                    </Col>
-                    <Col xs={12} lg={12} key='collapse-a' style={{ textAlign: "right" }}>
-                        <Button type='primary' htmlType='submit'>
-                            Search
-                        </Button>
-                    </Col>
-                </Row>
-                <Table columns={columns} dataSource={brandlist} />;
+                
+                <Table columns={columns} dataSource={brandlist} />
             </Card>
         </>
     );
