@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Button, Breadcrumb, Form, Row, Col, Input, Space, Image, Modal, Card, Radio } from 'antd';
+import { Button, Breadcrumb, Form, Row, Col, Input, Space, Image, Modal, Card, Radio, Upload } from 'antd';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { IoIosAddCircle } from "react-icons/io";
 import { useSelector, useDispatch } from 'react-redux'
 import ReactPlayer from 'react-player';
 import NewInfluencers from './NewInfluencers'
-import { brands,} from '../../store/BrandRedux'
+import { brands, } from '../../store/BrandRedux'
 
 
 
@@ -31,7 +31,7 @@ const FormDetails = () => {
             span: 16,
         },
     };
-    
+
     // state = {
     //     value: 1,
     //   };
@@ -44,7 +44,7 @@ const FormDetails = () => {
     return (<>
         <Form name='dynamic_rule'
             onFinish={onFinish}
-            >
+        >
             <Card className='user-card user-card-lg'>
                 <Row gutter={{ xs: 16, sm: 16, md: 32 }}>
                     <Col xs={24} lg={24} key='collapse-a' style={{ borderBottom: "1px solid #ccc ", paddingBottom: "10px" }}>
@@ -84,16 +84,11 @@ const FormDetails = () => {
                                                 message: 'Please enter your Email',
                                             },
                                         ]}>
-
-
                                         <Input placeholder='Select Influencers ited up with' />
                                         <br />
                                         <br />
                                         <a onClick={() => setLoading(true)} style={{ textDecoration: "underline", }}> Add New Influencers</a>
-
-
                                     </Form.Item>
-
                                     <Form.Item {...formTailLayout}
                                         name='profile'
                                         label="Upload Cover GIf Image"
@@ -103,7 +98,6 @@ const FormDetails = () => {
                                                 message: 'Please add Profile Image',
                                             },
                                         ]}>
-
                                         <Image
                                             width={200}
                                             height={160}
@@ -112,12 +106,9 @@ const FormDetails = () => {
                                         />
                                         <br />
                                         <br />
-                                        <div>
-                                            <Button htmlType='submit'>
-                                                Upload GIF
-                                            </Button>
-                                        </div>
-
+                                        <Upload style={{ marginLeft: 0 }} >
+                                            <Button > Upload GIF</Button>
+                                        </Upload>
                                     </Form.Item>
                                     <Form.Item
                                         {...formItemLayout}
@@ -142,7 +133,6 @@ const FormDetails = () => {
                                             <a style={{ textDecoration: "underline" }} href='#'>Cancel</a>
                                         </Space>
                                     </Form.Item>
-
                                 </Col>
                             </Row>
                         </Card>
@@ -169,8 +159,7 @@ const FormDetails = () => {
                                             controls={true}
                                             url='https://www.facebook.com/facebook/videos/10153231379946729/'
                                         />
-
-                                        <span style={{ fontSize: "50px", position: "absolute", right: "40px", top: "55px",color:"#0A8FDC" }}><IoIosAddCircle /></span>
+                                        <span style={{ fontSize: "50px", position: "absolute", right: "40px", top: "55px", color: "#0A8FDC" }}><IoIosAddCircle /></span>
                                     </Form.Item>
                                     <Form.Item {...tailLayout} >
                                         <Space size='large' style={{ marginTop: "50px" }}>
@@ -222,7 +211,6 @@ const FormDetails = () => {
                                                 message: 'Please add Profile Image',
                                             },
                                         ]}>
-
                                         <Image
                                             width={200}
                                             height={160}
@@ -231,12 +219,9 @@ const FormDetails = () => {
                                         />
                                         <br />
                                         <br />
-                                        <div>
-                                            <Button htmlType='submit'>
-                                                Upload Image
-                                            </Button>
-                                        </div>
-
+                                        <Upload style={{ marginLeft: 0 }} >
+                                            <Button >  Upload Image</Button>
+                                        </Upload>
                                     </Form.Item>
                                     <Form.Item
                                         {...formItemLayout}
@@ -250,21 +235,20 @@ const FormDetails = () => {
                                         ]}>
                                         <TextArea placeholder='Enter Text' rows={4} />
                                     </Form.Item>
-
                                     <Form.Item
                                         {...formItemLayout}
                                         name='managername'
                                         label='Button Type'
                                         rules={[
-                                            
+
                                         ]}>
                                         <Space onOk={() => setLoading(false)} onCancel={() => setLoading(false)}>
-                                        <RadioGroup >
-                                            <Radio value={1}>Know More</Radio>
-                                            <Radio value={2}>Visit Website</Radio>
-                                            <Radio value={3}>Reminder</Radio>
-                                        </RadioGroup>
-                                    </Space>
+                                            <RadioGroup >
+                                                <Radio value={1}>Know More</Radio>
+                                                <Radio value={2}>Visit Website</Radio>
+                                                <Radio value={3}>Reminder</Radio>
+                                            </RadioGroup>
+                                        </Space>
                                     </Form.Item>
                                     <Form.Item
                                         {...formItemLayout}
@@ -278,7 +262,6 @@ const FormDetails = () => {
                                         ]}>
                                         <Input placeholder='Enter Text' />
                                     </Form.Item>
-
                                     <Form.Item
                                         {...formItemLayout}
                                         name='managername'
@@ -289,10 +272,11 @@ const FormDetails = () => {
                                                 message: 'Please enter Manager Name',
                                             },
                                         ]}>
+                                            
                                         <TextArea placeholder='Enter Text' rows={4} />
                                     </Form.Item>
-
-                                    <Form.Item {...tailLayout}>
+                                    <Form.Item
+                                        {...tailLayout}>
                                         <Space size='large' >
                                             <Button type='primary' htmlType='submit'>
                                                 Back

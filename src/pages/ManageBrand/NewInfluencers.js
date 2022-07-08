@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Button, Breadcrumb, Form, Row, Col, Input, Space, Image, Switch, Card } from 'antd';
+import { Button, Breadcrumb, Form, Row, Col, Input, Space, Image, Upload, Card } from 'antd';
 import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import ComponentHeader from '../../@crema/core/AppComponentHeader';
 import { UploadOutlined, } from '@ant-design/icons';
@@ -81,11 +81,9 @@ const FormDetails = () => {
                                         />
                                         <br />
                                         <br />
-                                        <div>
-                                            <Button htmlType='submit'>
-                                                Upload GIF
-                                            </Button>
-                                        </div>
+                                        <Upload style={{ marginLeft: 0 }} >
+                                            <Button > Upload GIF</Button>
+                                        </Upload>
 
                                     </Form.Item>
                                     <Form.Item
