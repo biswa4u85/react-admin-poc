@@ -9,6 +9,16 @@ const initialState = {
     brandlist: [],
 
 }
+export const addbrand = createAsyncThunk(
+    'brand/addbrand',
+    async (params, { rejectWithValue }) => {
+        const response = await apiPostCall(`/brands`, params)
+        if (response.data.status === 'error') {
+            return rejectWithValue(response.data)
+        }
+        return response.data
+    }
+)
 
 export const getbrand = createAsyncThunk(
     'brand/getbrand',

@@ -6,6 +6,8 @@ import { IoIosAddCircle } from "react-icons/io";
 import { useSelector, useDispatch } from 'react-redux'
 import ReactPlayer from 'react-player';
 import NewInfluencers from './NewInfluencers'
+import { brands,} from '../../store/BrandRedux'
+
 
 
 const FormDetails = () => {
@@ -19,9 +21,8 @@ const FormDetails = () => {
 
     const onFinish = (values) => {
         console.log(values)
-        // let params = { ...values, token, id: singledata._id }
-        // pageActive.current = true;
-        // dispatch(upDate(params))
+        // let params = {...values ,token }
+        // dispatch(brands(params))
     };
 
     const tailLayout = {

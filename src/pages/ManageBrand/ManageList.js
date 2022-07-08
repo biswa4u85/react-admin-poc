@@ -86,13 +86,13 @@ const FormDetails = () => {
                render: (text, record) => (
                   
               <Space size='middle'>
-                   <DoubleRightOutlined style={{ color: '#52c41a' }} 
+                   {/* <DoubleRightOutlined style={{ color: '#52c41a' }} 
                 onClick = {() => {
                     dispatch(singledata(record))
                        navigate(`/ManageBrand/addnewbrand`)
                 }
                }
-                />
+                /> */}
                 <EditOutlined style={{ color: 'blue' }} />
                 <DeleteOutlined
                 onClick={() => deletitem(record)}
