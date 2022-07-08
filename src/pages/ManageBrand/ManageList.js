@@ -145,7 +145,7 @@ const FormDetails = () => {
                         </Row>
                         <Row>
                             <Col span={24} >
-                                <Button style={{ float: 'left' }} type='primary'><IoMdAdd /> Add Product</Button>
+                                <Button style={{ float: 'left' }} type='primary' onClick={() => navigate(`/ManageBrand/addnewbrand`)}><IoMdAdd /> Add Product</Button>
                                 <div style={{ textAlign: 'right' }}>
                                     <Button type='primary' htmlType='submit'>
                                         Search

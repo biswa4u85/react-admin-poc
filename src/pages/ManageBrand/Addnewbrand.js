@@ -21,7 +21,7 @@ const FormDetails = () => {
 
     const onFinish = (values) => {
         console.log(values)
-        // let params = {...values ,token }
+        // let params = {...values ,token ,coverImage:'some image'}
         // dispatch(brands(params))
     };
 
@@ -134,7 +134,7 @@ const FormDetails = () => {
                                     <Form.Item {...tailLayout}>
                                         <Space size='large' >
                                             <Button type='primary' htmlType='submit'>
-                                                Back
+                                                Submit
                                             </Button>
                                             <Button htmlType='submit'>
                                                 Next
